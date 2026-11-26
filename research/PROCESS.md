@@ -40,3 +40,18 @@ _A cargar por Fernando._
 **Resultado de la primera corrida** (`evidence/fase2-pipeline-run1.txt`): FRED todavía no había publicado el cierre del 25/11 para SP500, VIXCLS y DGS10 (sí para NASDAQCOM y DJIA). `validate` falló como estaba previsto y no se rellenó nada. Nasdaq y Dow coinciden con Yahoo dentro de ±0,05 %. Yahoo trae `^TNX` el 11/11 (el CBOE opera en Veterans Day); se registra y no se usa.
 
 **Evidencia:** `evidence/fase2-pipeline-run1.txt`, `data/processed/validation-report.json`, `data/processed/cross-check.json`.
+
+---
+
+## Fase 3 — Plantilla y render: "ningún número a mano" como código
+
+**Qué se hizo.** `scripts/lib/render.ts` y `scripts/render-story.ts`, con 8 tests (`tests/render.test.ts`).
+
+**Cómo funciona.**
+- La historia se escribe en `research/STORY.template.md` con marcadores: `{{sp500.cum_pct|pct}}` (dato), `{{d:2026-11-20}}` (fecha de un hecho, que tiene que ser una rueda del período) y `{{table:daily}}`.
+- Antes de reemplazar marcadores, el render saca marcadores, links y una lista corta de frases permitidas ("S&P 500", "10 años", "30 días", "3 minutos"). Si queda **un solo dígito**, falla y muestra la línea.
+- Un marcador con ruta inexistente, formato desconocido o tipo equivocado también hace fallar el render.
+- Si `validate` no pasó, `render` no genera `STORY.md`. Con `--allow-incomplete` lo genera con un aviso visible arriba.
+- Formato en español (es-AR): coma decimal, signo menos tipográfico, días de la semana.
+
+**Por qué.** La regla "ningún número escrito a mano por el modelo" no puede depender de que el modelo la respete: tiene que fallar si no se cumple.
