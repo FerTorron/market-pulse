@@ -1,0 +1,21 @@
+{
+  "name": "market-pulse",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "fetch": "tsx scripts/fetch.ts",
+    "compute": "tsx scripts/compute.ts",
+    "validate": "tsx scripts/validate.ts",
+    "render": "tsx scripts/render-story.ts",
+    "pipeline": "pnpm fetch && pnpm compute && pnpm validate && pnpm render",
+    "data": "pnpm fetch && pnpm compute && pnpm validate",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.10",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.2"
+  }
+}
