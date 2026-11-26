@@ -40,3 +40,22 @@ describe('render', () => {
     expect(render('{{table:daily}}', data)).toContain('| miércoles 11 de noviembre | +1,30 % | +0,50 % | −0,25 % |');
   });
 });
+
+describe('checkAssertions', () => {
+  const d = { a: { x: -1, d: '2026-11-20' }, b: { d: '2026-11-20' }, c: { d: '2026-11-19' } };
+  it('pasa cuando se cumplen y falla con detalle cuando no', async () => {
+    const { checkAssertions } = await import('../scripts/lib/render.ts');
+    expect(checkAssertions("<!-- assert\n# comentario\na.x < 0\na.d == b.d\na.d != c.d\na.d == '2026-11-20'\n-->", d)).toEqual([]);
+    const f = checkAssertions('<!-- assert\na.x > 0\na.d == c.d\n-->', d);
+    expect(f).toHaveLength(2);
+    expect(f[0]).toContain('izquierda=-1');
+  });
+  it('render falla si una aserción no se cumple', () => {
+    expect(() => render('<!-- assert\nsp500.cum_pct > 0\n-->\nTexto', data)).toThrow(/Aserciones/);
+  });
+  it('la tabla diaria no pierde filas si a una serie le falta una rueda', () => {
+    const partial = { ...data, nasdaq: { name: 'Nasdaq', daily: [{ date: '2026-11-11', pct: 0.5 }, { date: '2026-11-12', pct: 1 }] } };
+    const t = render('{{table:daily}}', partial);
+    expect(t).toContain('| jueves 12 de noviembre | s/d | +1,00 % | s/d |');
+  });
+});

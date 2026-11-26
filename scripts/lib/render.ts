@@ -37,6 +37,8 @@ export const FORMATS: Record<string, (v: unknown) => string> = {
   int: (v) => n(num(v), 0),
   date: (v) => { const p = parts(str(v)); return `${p.day} de ${p.month}`; },
   dow: (v) => { const p = parts(str(v)); return `${p.dow} ${p.day} de ${p.month}`; },
+  /** Identificadores (p. ej. el ID de una serie de FRED). Solo strings. */
+  id: (v) => { if (typeof v !== 'string') throw new Error(`se esperaba un identificador y llegó ${JSON.stringify(v)}`); return v; },
 };
 
 function num(v: unknown): number {
@@ -66,8 +68,42 @@ function dailyTable(data: unknown): string {
   const series = keys.map((k) => lookup(data, `${k}.daily`) as DailyRow[]);
   const names = keys.map((k) => String(lookup(data, `${k}.name`)));
   const head = `| Día | ${names.join(' | ')} |\n|---|${keys.map(() => '---:').join('|')}|`;
-  const rows = series[0]!.map((r, i) => `| ${FORMATS.dow!(r.date)} | ${series.map((s) => (s[i]?.date === r.date && s[i]?.pct != null ? FORMATS.pct!(s[i]!.pct) : 's/d')).join(' | ')} |`);
+  // Unión de fechas de los tres índices: si a una serie le falta una rueda, la fila aparece con "s/d"
+  // (antes se tomaban las fechas del S&P 500 y una rueda faltante desaparecía de toda la tabla).
+  const dates = [...new Set(series.flatMap((s) => s.map((r) => r.date)))].sort();
+  const rows = dates.map((date) => `| ${FORMATS.dow!(date)} | ${series.map((s) => { const r = s.find((x) => x.date === date); return r?.pct != null ? FORMATS.pct!(r.pct) : 's/d'; }).join(' | ')} |`);
   return [head, ...rows].join('\n');
+}
+
+/** Aserciones declaradas en la plantilla dentro de `<!-- assert ... -->`, una por línea:
+ *  `ruta op valor`, con op en < <= > >= == != y valor = número, 'texto' o otra ruta.
+ *  Garantizan que lo que el texto afirma (signos, fechas que coinciden) siga siendo cierto con los datos. */
+export function checkAssertions(template: string, data: unknown): string[] {
+  const failures: string[] = [];
+  for (const block of template.matchAll(/<!--\s*assert\b([\s\S]*?)-->/g)) {
+    for (const raw of block[1]!.split(/\r?\n/)) {
+      const line = raw.trim();
+      if (!line || line.startsWith('#')) continue;
+      const m = line.match(/^(\S+)\s*(<=|>=|==|!=|<|>)\s*(.+)$/);
+      if (!m) { failures.push(`aserción mal formada: "${line}"`); continue; }
+      const [, lhsPath, op, rhsRaw] = m as unknown as [string, string, string, string];
+      try {
+        const lhs = lookup(data, lhsPath);
+        const rhs = /^'.*'$/.test(rhsRaw) ? rhsRaw.slice(1, -1)
+          : /^-?\d+(\.\d+)?$/.test(rhsRaw) ? Number(rhsRaw)
+          : rhsRaw === 'true' || rhsRaw === 'false' ? rhsRaw === 'true'
+          : lookup(data, rhsRaw);
+        const ok = op === '==' ? lhs === rhs : op === '!=' ? lhs !== rhs
+          : typeof lhs === 'number' && typeof rhs === 'number'
+            ? (op === '<' ? lhs < rhs : op === '<=' ? lhs <= rhs : op === '>' ? lhs > rhs : lhs >= rhs)
+            : false;
+        if (!ok) failures.push(`${line}  (izquierda=${JSON.stringify(lhs)}, derecha=${JSON.stringify(rhs)})`);
+      } catch (e) {
+        failures.push(`${line}: ${(e as Error).message}`);
+      }
+    }
+  }
+  return failures;
 }
 
 const MARKER = /\{\{\s*([^}]+?)\s*\}\}/g;
@@ -98,6 +134,8 @@ export function findHandwrittenNumbers(template: string): string[] {
 export function render(template: string, data: unknown): string {
   const handwritten = findHandwrittenNumbers(template);
   if (handwritten.length) throw new Error(`Números escritos a mano en la plantilla:\n  ${handwritten.join('\n  ')}`);
+  const failed = checkAssertions(template, data);
+  if (failed.length) throw new Error(`Aserciones que no se cumplen con estos datos (el texto diría algo falso):\n  ${failed.join('\n  ')}`);
 
   const errors: string[] = [];
   const out = template

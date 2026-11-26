@@ -27,7 +27,7 @@ Desde acá, solo podés usar hechos **APROBADOS** o **REFORMULADOS** (con la ref
 Escribilo vos. Audiencia: alguien sin conocimientos financieros con 3 minutos. Tono: claro, concreto, sin jerga; si un término es inevitable, se explica en la misma oración.
 
 **Reglas de la plantilla** (las hace cumplir `scripts/lib/render.ts`):
-- **Ningún dígito escrito a mano.** Cada número es un marcador `{{ruta|formato}}` contra `data/processed/market-data.json`. Formatos: `pct`, `pct1`, `abspct`, `abspct1`, `num`, `num0`, `pts`, `pts0`, `rate`, `bp`, `absbp`, `int`, `date`, `dow`.
+- **Ningún dígito escrito a mano.** Cada número es un marcador `{{ruta|formato}}` contra `data/processed/market-data.json`. Formatos: `pct`, `pct1`, `abspct`, `abspct1`, `num`, `num0`, `pts`, `pts0`, `rate`, `bp`, `absbp`, `int`, `date`, `dow`, `id` (identificadores de texto, p. ej. el ID de una serie).
 - Fechas de hechos: `{{d:AAAA-MM-DD}}`. Tabla diaria: `{{table:daily}}`.
 - Frases con dígitos permitidas: "S&P 500", "10 años", "30 días", "3 minutos". Nada más.
 - Los textos de los links no pueden tener dígitos.

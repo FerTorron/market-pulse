@@ -1,0 +1,21 @@
+$ tsx scripts/render-story.ts --check
+Números escritos a mano en la plantilla:
+  línea 10: 30  ←  "## En 30 segundos"
+  línea 18: 1.  ←  "### 1. Más días malos que buenos, y el Nasdaq fue el que más perdió"
+  línea 24: 2.  ←  "### 2. El peor día fue el {{sp500.worst_day.date|dow}}, sin un anuncio puntual que lo explique"
+  línea 30: 3.  ←  "### 3. El mejor día coincidió con la vuelta del CEO de Nvidia"
+  línea 38: 4.  ←  "### 4. El VIX: cuánto movimiento espera el mercado"
+  línea 44: 5.  ←  "### 5. La tasa a 10 años casi no se movió"
+  línea 67: 500,, 10.  ←  "- **Números:** [FRED](https://fred.stlouisfed.org/) (Reserva Federal de St. Louis), series SP500, NASDAQCOM, DJIA, VIXCLS y DGS10. Se calculan con `scripts/compute.ts`; ningún número de este texto fue escrito a mano."
+[ELIFECYCLE] Command failed with exit code 1.
+$ tsx scripts/render-story.ts --check
+Plantilla OK: sin números escritos a mano y todos los marcadores resuelven.
+$ tsx scripts/render-story.ts --check
+Plantilla OK: sin números escritos a mano y todos los marcadores resuelven.
+$ tsx scripts/render-story.ts
+La validación no pasó (data/processed/validation-report.json). No se genera STORY.md.
+Errores: SP500: faltan: 2026-11-25 | VIXCLS: faltan: 2026-11-25 | DGS10: faltan: 2026-11-25 | -: market-data.json marcado incompleto: [{"series":"SP500","dates":["2026-11-25"]},{"series":"VIXCLS","dates":["2026-11-25"]},{"series":"DGS10","dates":["2026-11-25"]}]
+Para generar un borrador marcado como incompleto: pnpm render --allow-incomplete
+[ELIFECYCLE] Command failed with exit code 1.
+$ tsx scripts/render-story.ts --check
+Plantilla OK: sin números escritos a mano y todos los marcadores resuelven.

@@ -74,3 +74,39 @@ _A cargar por Fernando._
 - **Dos pasadas del verifier** en vez de una: la primera filtra qué hechos se pueden usar; la segunda controla lo que más falla en textos generados: conclusiones que exceden los datos y adjetivos que no coinciden con la magnitud ("se desplomó" para un −0,3 %).
 - **Modelo por rol:** el más barato para correr scripts, el más fuerte para verificar, porque es donde un error cuesta más.
 - **Si faltan datos, el comando no decide solo:** sigue con eventos y verificación, pero pregunta antes de generar un borrador incompleto.
+
+---
+
+## Fase 5 — Primera corrida de `/market-report`
+
+**Cómo se corrió.** Los subagentes de `.claude/agents/` se crearon en la misma sesión y Claude Code todavía no los registraba como tipos propios. Por eso se lanzaron como agentes generales que leen su definición del archivo, con el modelo de cada rol (haiku, sonnet, opus). En una sesión nueva se cargan como tipos propios.
+
+**1. data-agent ∥ events-agent (en paralelo).**
+- data-agent: **FAIL** esperado. FRED todavía no publicó el 25/11 de SP500, VIXCLS y DGS10; NASDAQCOM y DJIA sí. No se rellenó nada (`evidence/data-agent-run.txt`).
+- events-agent: 23 hechos (7 con confianza alta, 9 media, 7 baja) y 11 atribuciones de prensa (`research/events.md`).
+
+**2. verifier, pasada 1: eventos** (`evidence/audit-eventos.md`). Quedaron 14 aprobadas, 12 para reformular y 8 rechazadas.
+- Rechazó, entre otras: la investigación a Huang con fecha y link equivocados, los dichos de Trump sobre Irán (una sola fuente con dos versiones distintas de la frase), un resumen automático que contradice los datos de DGS10, y notas de AP contadas dos veces.
+- Encontró fuentes primarias que el events-agent no tenía: census.gov, BEA (que el events-agent había dado por inaccesible) y USTR.
+
+**3. Borrador** (`research/STORY.template.md`), escrito por Claude con solo hechos aprobados o reformulados. El primer `render --check` **lo frenó**: había dígitos escritos a mano ("30 segundos", títulos numerados, IDs de series y un nombre de archivo). Se corrigió sin agregar excepciones.
+
+**4. verifier, pasada 2: borrador.** Quedaron 28 aprobadas, 13 para reformular y 1 rechazada.
+- Rechazada: Claude había atribuido el "gran evento" de una cita a los resultados de Nvidia, cuando la fuente se refería a la salida a bolsa de Anthropic.
+- Para reformular: causas implícitas ("el golpe vino de"), adjetivos sin fuente ("sorpresiva", "calma"), un título que escondía un movimiento ("la tasa casi no se movió"), una valoración propia ("el dinero sigue caro"), un número escrito en palabras que el control no detecta ("dos puntos básicos") y una afirmación falsa al pie de la letra en el pie ("ningún número fue escrito a mano").
+- Detectó un **bug** en `render.ts`: la tabla diaria perdía la fila de una rueda si al S&P le faltaba ese dato.
+
+**5. Correcciones.**
+- Se aplicaron todos los cambios y se arregló el bug, con test.
+- La lista "qué volver a comprobar cuando lleguen los datos del 25/11" del verifier se convirtió en **aserciones** dentro de la plantilla (`<!-- assert ... -->`). El render las evalúa y falla si los datos nuevos contradicen el texto (por ejemplo, si el peor día deja de ser el mismo para el S&P y el Nasdaq). Son 19 tests en total.
+
+**6. verifier, pasada 3: correcciones** (la última que permite el comando). 41 de 42 correcciones bien aplicadas, 2 para reformular y 0 rechazadas.
+- C43: la corrección de C16 seguía exagerando la cita; el error venía de la sugerencia del propio verifier en la pasada 2.
+- C44: el pie que agrega `render-story.ts` repetía el error E8.
+- Señaló huecos en las aserciones. Se agregaron dos: el orden "subió, bajó" de la tasa y que hubo un cierre por encima de la base. También se corrigió el comentario del umbral.
+- `render-story.ts` ahora falla si `cross-check.json` tiene diferencias fuera de tolerancia, porque la historia dice que las series coinciden.
+- Se aplicaron sin otra revisión, como define el comando.
+
+**7. Render.** `render --check` pasa. `render` se niega a generar `STORY.md` porque la validación es FAIL. Queda pendiente de los datos del 25/11 o de la decisión de generar un borrador marcado como incompleto.
+
+**Evidencia:** `evidence/data-agent-run.txt`, `evidence/audit-eventos.md`, `evidence/market-report-render.txt`, `research/audit.md`.

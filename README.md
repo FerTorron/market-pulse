@@ -27,6 +27,8 @@ Agentes (`.claude/agents/`):
 - **events-agent**: qué pasó en cada rueda, con fuente, link y nivel de confianza → `research/events.md`.
 - **verifier**: puede rechazar afirmaciones (causalidad sin evidencia, una sola fuente, fuentes que se copian, fechas mal, conclusiones que exceden los datos) → `research/audit.md`.
 
+La plantilla `research/STORY.template.md` lleva marcadores (`{{sp500.cum_pct|pct}}`) y aserciones (`<!-- assert sp500.cum_pct < 0 -->`): el render falla si hay un dígito escrito a mano o si los datos contradicen lo que el texto afirma.
+
 El comando `/market-report` corre data-agent y events-agent en paralelo, después verifier, y arma `STORY.md`.
 
 ## Cómo correrlo

@@ -1,5 +1,5 @@
 {
-  "downloaded_at": "2026-11-26T16:41:49.512Z",
+  "downloaded_at": "2026-11-26T16:45:20.140Z",
   "period_end_requested": "2026-11-25",
   "entries": [
     {
@@ -59,7 +59,7 @@
       "symbol": "^GSPC",
       "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?period1=1793664000&period2=1795737600&interval=1d",
       "file": "data/raw/yahoo/SP500.json",
-      "sha256": "dc52ecd665480672e82d24090b9a71458f501b58f85851ef28641a04a528b0ef"
+      "sha256": "6f114c175b9a65de018534c4eba2fc29aa3cb9e07c483dddd611ccadda638b83"
     },
     {
       "source": "Yahoo Finance",
@@ -68,7 +68,7 @@
       "symbol": "^IXIC",
       "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EIXIC?period1=1793664000&period2=1795737600&interval=1d",
       "file": "data/raw/yahoo/NASDAQCOM.json",
-      "sha256": "21319a4480e5cee44ed6c72baecf8c9684969dcab5c915dfe71ef62fc479714b"
+      "sha256": "1368cffc67af89e2d52490382dd257d09be4febd5c1c987172016c8541fd8c54"
     },
     {
       "source": "Yahoo Finance",
@@ -77,7 +77,7 @@
       "symbol": "^DJI",
       "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EDJI?period1=1793664000&period2=1795737600&interval=1d",
       "file": "data/raw/yahoo/DJIA.json",
-      "sha256": "8ca1d200c4687405ae436c6c99e45b928775236b91a8f6db47cb61d883929f2b"
+      "sha256": "e31ce3c93e11686ad5bce558617b306dae2c0c38b0ff9f951cd92bcfe467caad"
     },
     {
       "source": "Yahoo Finance",
@@ -86,7 +86,7 @@
       "symbol": "^VIX",
       "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EVIX?period1=1793664000&period2=1795737600&interval=1d",
       "file": "data/raw/yahoo/VIXCLS.json",
-      "sha256": "586933a66c422a4afeb20843fd29cbff97020448cae5c523635eea80ece114d4"
+      "sha256": "96ee05879fe39b2a60d9bdf7083bb1c336cd4ba8365ed6ef9648b58e3ca2807c"
     },
     {
       "source": "Yahoo Finance",
@@ -95,7 +95,7 @@
       "symbol": "^TNX",
       "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ETNX?period1=1793664000&period2=1795737600&interval=1d",
       "file": "data/raw/yahoo/DGS10.json",
-      "sha256": "4523f0f9c7d8259b35cefbdf6bb1244101a2ef1019244891fb176382351e5068"
+      "sha256": "22ccc25e41f5614748736b99819df3210cfe7cef4c541395f7521f619ebbfa14"
     }
   ]
 }
