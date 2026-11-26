@@ -55,3 +55,22 @@ _A cargar por Fernando._
 - Formato en español (es-AR): coma decimal, signo menos tipográfico, días de la semana.
 
 **Por qué.** La regla "ningún número escrito a mano por el modelo" no puede depender de que el modelo la respete: tiene que fallar si no se cumple.
+
+---
+
+## Fase 4 — Agentes y comando
+
+**Qué se hizo.** Tres subagentes en `.claude/agents/` y el comando `.claude/commands/market-report.md`.
+
+| Agente | Rol | Herramientas | Modelo | Límite clave |
+|---|---|---|---|---|
+| data-agent | Corre `pnpm data` y reporta | Bash, Read | haiku | No interpreta, no edita datos ni scripts, no rellena huecos |
+| events-agent | Qué pasó en cada rueda → `research/events.md` | WebSearch, WebFetch, Read, Write | sonnet | Hecho ≠ causa; abre cada link; fuentes que copian el mismo cable cuentan como una |
+| verifier | Audita y puede rechazar → `research/audit.md` | Read, Grep, Glob, WebFetch, Write | opus | Códigos de rechazo: CAUSA, UNA-FUENTE, COPIA, FECHA, EXCESO, NUMERO, MARCADOR, FUERA, LINK |
+
+**Flujo de `/market-report`:** data-agent ∥ events-agent → verifier (pasada 1: eventos) → borrador de la plantilla → `render --check` → verifier (pasada 2: borrador) → correcciones (una sola pasada extra) → `render`.
+
+**Qué se decidió y por qué.**
+- **Dos pasadas del verifier** en vez de una: la primera filtra qué hechos se pueden usar; la segunda controla lo que más falla en textos generados: conclusiones que exceden los datos y adjetivos que no coinciden con la magnitud ("se desplomó" para un −0,3 %).
+- **Modelo por rol:** el más barato para correr scripts, el más fuerte para verificar, porque es donde un error cuesta más.
+- **Si faltan datos, el comando no decide solo:** sigue con eventos y verificación, pero pregunta antes de generar un borrador incompleto.
