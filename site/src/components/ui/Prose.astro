@@ -1,0 +1,68 @@
+---
+// Renders HTML generated from the story markdown (already checked by the pipeline).
+interface Props {
+  html: string;
+  class?: string;
+}
+
+const { html, class: className } = Astro.props;
+---
+
+<div class:list={['prose', className]} set:html={html} />
+
+<style>
+  .prose {
+    max-width: var(--measure);
+  }
+  .prose :global(p + p),
+  .prose :global(p + ul),
+  .prose :global(ul + p),
+  .prose :global(table + p) {
+    margin-top: 0.9em;
+  }
+  .prose :global(strong) {
+    font-weight: 600;
+  }
+  .prose :global(ul) {
+    margin: 0;
+    padding-left: 1.1em;
+  }
+  .prose :global(li + li) {
+    margin-top: 0.45em;
+  }
+  .prose :global(code) {
+    font-family: var(--font-data);
+    font-size: 0.82em;
+    background: var(--grid);
+    padding: 1px 5px;
+    border-radius: 4px;
+    overflow-wrap: anywhere;
+  }
+  .prose :global(a) {
+    color: var(--ink);
+    text-decoration-color: var(--ink-3);
+  }
+  .prose :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-data);
+    font-size: var(--step--1);
+    font-variant-numeric: tabular-nums;
+  }
+  .prose :global(th),
+  .prose :global(td) {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--rule);
+    text-align: right;
+    white-space: nowrap;
+  }
+  .prose :global(th:first-child),
+  .prose :global(td:first-child) {
+    text-align: left;
+    white-space: normal;
+  }
+  .prose :global(th) {
+    color: var(--ink-2);
+    font-weight: 500;
+  }
+</style>

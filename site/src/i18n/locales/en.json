@@ -1,0 +1,86 @@
+{
+  "meta": {
+    "title": "Market Pulse · The US stock market in two weeks",
+    "description": "What the US stock market did between {start} and {end}, explained for someone with no financial background, and how it was built with Claude."
+  },
+  "header": {
+    "brand": "market pulse",
+    "languageNav": "Language",
+    "skipToContent": "Skip to content"
+  },
+  "notice": {
+    "title": "Draft with incomplete data",
+    "body": "FRED has not yet published the last day's close for {series}. Those series run up to the latest published date, so comparisons between indexes are not valid yet."
+  },
+  "hero": {
+    "eyebrow": "US stock market · {start} to {end}"
+  },
+  "chart": {
+    "title": "How much each index rose or fell since the close on {base}",
+    "caption": "Cumulative change, close to close. Hover or tap the chart to see each day.",
+    "worstDay": "Worst day for S&P and Nasdaq",
+    "bestDay": "Best day",
+    "vixTitle": "VIX: how much movement the market expects",
+    "vixCaption": "Index level each day. Higher means more shaking is expected.",
+    "tableSummary": "See the chart data as a table",
+    "dateColumn": "Day",
+    "noData": "n/a"
+  },
+  "keyFigures": {
+    "title": "The period in figures",
+    "inPeriod": "over the period",
+    "vixPeak": "VIX at its peak",
+    "vixPeakOn": "on {date}",
+    "rate": "Change in the 10-year rate",
+    "rateChange": "{from} → {to}"
+  },
+  "process": {
+    "eyebrow": "How I built it",
+    "title": "A system that puts the AI to the test",
+    "intro": "Everything was made with Claude, with two kinds of checks: the code stops the build if a hand-written digit appears or if the data contradicts what the text takes as true, and a verifier agent reviews what the code can't see, such as unsupported causes or sources copying each other.",
+    "phaseLabel": "Phase {n}",
+    "evidence": "Evidence",
+    "byAuthor": "Done by me, with Claude",
+    "phases": {
+      "brief": {
+        "title": "Understanding the brief",
+        "body": "I analyzed the brief and the role with Claude. We set the period, an audience with no financial background and little time, which metrics to look at and what to leave out: predictions and recommendations."
+      },
+      "plan": {
+        "title": "Planning before building",
+        "body": "Claude proposed a plan and waited for my approval. While planning, it noticed that the Veterans Day holiday closes the bond market but not the stock market, and that the checks had to account for it."
+      },
+      "data": {
+        "title": "Data with a safety net",
+        "body": "The scripts download the FRED series, store each file with its fingerprint and recalculate everything independently to compare. Yahoo Finance is used only as a check, never to fill in data."
+      },
+      "render": {
+        "title": "No market figure written by hand",
+        "body": "The story is a template with markers filled from the data. If a digit appears outside the markers and a short list of allowed phrases, or if the data stops meeting one of the conditions the text takes as true, the build fails. The digit check stopped Claude's first draft."
+      },
+      "agents": {
+        "title": "Three agents with separate roles",
+        "body": "One runs the data and doesn't interpret it. Another researches what happened each day, with a date and a link. A verifier can reject claims: causes without evidence, a single source, sources copying each other, wrong dates."
+      },
+      "run": {
+        "title": "The first run",
+        "body": "The verifier rejected claims with a single source, wrong dates and unsupported causes, several of them written by Claude, and found a bug in the code. FRED had not yet published the last day and the system didn't fill anything in."
+      },
+      "site": {
+        "title": "This site",
+        "body": "Static and bilingual, built with Astro. It reads the same files the pipeline produces and goes through the same checks, in both languages."
+      }
+    },
+    "links": {
+      "repo": "See the code and the full log",
+      "decisions": "What Claude got wrong and what was changed"
+    }
+  },
+  "footer": {
+    "madeBy": "Made by",
+    "portfolio": "Portfolio",
+    "repo": "Code on GitHub",
+    "dataNote": "Data from FRED, downloaded on {date}. No market figure on this page was written by hand.",
+    "disclaimer": "This is not investment advice."
+  }
+}

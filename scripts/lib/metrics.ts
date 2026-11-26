@@ -66,6 +66,8 @@ export interface IndexSummary {
   trading_days: number;
   /** Caída desde el máximo del período hasta el mínimo posterior. */
   max_drawdown_pct: number | null;
+  /** Variación acumulada contra la base en cada rueda (la base vale 0). Para gráficos. */
+  path: { date: string; cum_pct: number }[];
 }
 
 export function summarizeIndex(points: Point[], base: string): IndexSummary {
@@ -96,6 +98,7 @@ export function summarizeIndex(points: Point[], base: string): IndexSummary {
     down_days: d.filter((p) => (p.pct ?? 0) < 0).length,
     trading_days: d.length,
     max_drawdown_pct: mdd,
+    path: [{ date: b.date, cum_pct: 0 }, ...d.map((p) => ({ date: p.date, cum_pct: pctChange(b.value, p.value) }))],
   };
 }
 

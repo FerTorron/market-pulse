@@ -51,6 +51,6 @@ export const PATHS = {
   marketData: 'data/processed/market-data.json',
   validation: 'data/processed/validation-report.json',
   crossCheck: 'data/processed/cross-check.json',
-  storyTemplate: 'research/STORY.template.md',
-  story: 'research/STORY.md',
+  storyTemplate: { es: 'research/STORY.template.md', en: 'research/STORY.template.en.md' },
+  story: { es: 'research/STORY.md', en: 'research/STORY.en.md' },
 } as const;

@@ -1,0 +1,58 @@
+---
+// One figure of the period: a label, the value (always from the data) and a short detail.
+interface Props {
+  label: string;
+  value: string;
+  detail: string;
+  /** CSS color for the identity swatch (series color). Optional: not every figure is a chart series. */
+  swatch?: string;
+}
+
+const { label, value, detail, swatch } = Astro.props;
+---
+
+<div class="figure">
+  <dt>
+    {swatch && <span class="swatch" style={`background:${swatch}`} aria-hidden="true" />}
+    {label}
+  </dt>
+  <dd>
+    <span class="value data">{value}</span>
+    <span class="detail">{detail}</span>
+  </dd>
+</div>
+
+<style>
+  .figure {
+    padding: 14px 0 16px;
+    border-top: 1px solid var(--rule);
+  }
+  dt {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-data);
+    font-size: var(--step--1);
+    color: var(--ink-2);
+  }
+  .swatch {
+    width: 14px;
+    height: 3px;
+    border-radius: 2px;
+  }
+  dd {
+    margin: 6px 0 0;
+    display: grid;
+    gap: 2px;
+  }
+  .value {
+    font-size: var(--step-2);
+    font-weight: 500;
+    line-height: 1.1;
+  }
+  .detail {
+    font-size: var(--step--1);
+    color: var(--ink-3);
+    font-family: var(--font-data);
+  }
+</style>

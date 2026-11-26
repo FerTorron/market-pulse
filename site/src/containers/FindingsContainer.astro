@@ -1,0 +1,64 @@
+---
+// The findings of the story, one per row. The VIX finding gets its own chart next to it.
+import LineChart from '@/components/charts/LineChart.astro';
+import Prose from '@/components/ui/Prose.astro';
+import SectionHeader from '@/components/ui/SectionHeader.astro';
+import type { LineChartModel } from '@/lib/charts/chartModels.ts';
+import type { StorySection } from '@/lib/story/parseStory.ts';
+
+interface Props {
+  section: StorySection;
+  vixChart: { title: string; caption: string; tableSummary: string; model: LineChartModel };
+}
+
+const { section, vixChart } = Astro.props;
+const isVix = (heading: string) => heading.includes('VIX');
+---
+
+<section class="page findings" aria-labelledby="findings">
+  <SectionHeader id="findings" title={section.heading} html />
+  <ul>
+    {
+      section.subsections.map((s) => (
+        <li class="finding">
+          <h3 set:html={s.heading} />
+          <div class="body">
+            <Prose html={s.html} />
+            {isVix(s.heading) && <LineChart id="vix" size="short" {...vixChart} />}
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  .findings {
+    margin-top: 72px;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .finding {
+    display: grid;
+    gap: 14px;
+    padding-block: 28px;
+    border-top: 1px solid var(--rule);
+  }
+  @media (min-width: 900px) {
+    .finding {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      gap: 40px;
+    }
+  }
+  h3 {
+    font-size: var(--step-1);
+    font-weight: 700;
+  }
+  .body {
+    display: grid;
+    gap: 20px;
+  }
+</style>

@@ -61,7 +61,7 @@ Ese día el S&P 500 cayó {{sp500.worst_day.pct|abspct}} y el Nasdaq {{nasdaq.wo
 
 El {{sp500.best_day.date|dow}} el S&P 500 subió {{sp500.best_day.pct|abspct}} y el Nasdaq {{nasdaq.best_day.pct|abspct}}, la mayor suba del período para los tres índices.
 
-**Qué coincidió:** esa mañana, antes de la apertura, Nvidia anunció que Jensen Huang volvía como CEO ([comunicado de Nvidia a la SEC](https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000090/nov23pressrelease.htm); [TechCrunch](https://techcrunch.com/2026/11/23/nvidia-reverses-course-and-brings-jensen-huang-back-as-ceo/)). Había renunciado "con efecto inmediato" el {{d:2026-11-12}} ([comunicado de Nvidia a la SEC](https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000082/nvidiaannouncesceotransiti.htm)). Reuters informó que la vuelta se dio tras una intervención del presidente Trump ([Reuters vía Investing.com](https://www.investing.com/news/stock-market-news/huang-returns-as-nvidia-ceo-after-trump-intervention-in-abrupt-board-reversal-5049490)); Nvidia solo habló de información recibida de "altos niveles del gobierno".
+**Qué coincidió:** esa mañana, antes de la apertura, Nvidia anunció que Jensen Huang volvía como CEO ([comunicado de Nvidia a la SEC](https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000090/nov23pressrelease.htm); [TechCrunch](https://techcrunch.com/2026/11/23/nvidia-reverses-course-and-brings-jensen-huang-back-as-ceo/)). Había renunciado "con efecto inmediato" el {{d:2026-11-12}} ([comunicado de Nvidia a la SEC](https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000082/nvidiaannouncesceotransiti.htm)). Reuters informó que la vuelta se dio tras una intervención del presidente Trump ([Reuters vía Investing.com](https://www.investing.com/news/stock-market-news/huang-returns-as-nvidia-ceo-after-trump-intervention-in-abrupt-board-reversal-5049490)); Nvidia solo habló de información recibida de "altos niveles del gobierno de EE.UU.".
 
 Aun con ese salto, el rebote no alcanzó: al cierre del {{sp500.end.date|dow}} el S&P 500 seguía {{sp500.cum_pct|abspct}} abajo del punto de partida.
 
@@ -75,7 +75,7 @@ Empezó en {{vix.base.value|num}}, tocó su máximo de {{vix.high.value|num}} el
 
 La tasa que paga el gobierno de EE.UU. por pedir prestado a 10 años es una referencia del costo del dinero a largo plazo: influye en hipotecas y en préstamos a empresas. Pasó de {{us10y.base.value|rate}} a {{us10y.end.value|rate}} ({{us10y.change_bp|bp}}; un punto básico es la centésima parte de un punto porcentual). En el camino llegó a {{us10y.high.value|rate}}, el {{us10y.high.date|dow}}.
 
-**Contexto:** el {{d:2026-11-18}} la Reserva Federal publicó las minutas de su última reunión, donde casi todos los participantes veían apropiado volver a subir la tasa de interés ([Fed](https://federalreserve.gov/monetarypolicy/fomcminutes20261028.htm)). En estas dos semanas, la tasa larga terminó cerca de donde empezó.
+**Contexto:** el {{d:2026-11-18}} la Reserva Federal publicó las minutas de su última reunión, donde casi todos los participantes consideraron que probablemente sería apropiado volver a subir la tasa de interés ([Fed](https://federalreserve.gov/monetarypolicy/fomcminutes20261028.htm)). En estas dos semanas, la tasa larga terminó cerca de donde empezó.
 
 ## Día por día
 

@@ -1,0 +1,34 @@
+---
+// Any other section of the story (day by day, what it doesn't say, sources): heading + prose.
+import Prose from '@/components/ui/Prose.astro';
+import SectionHeader from '@/components/ui/SectionHeader.astro';
+import type { StorySection } from '@/lib/story/parseStory.ts';
+
+interface Props {
+  id: string;
+  section: StorySection;
+  variant?: 'default' | 'table' | 'quiet';
+}
+
+const { id, section, variant = 'default' } = Astro.props;
+---
+
+<section class:list={['page', 'story-section', variant]} aria-labelledby={id}>
+  <SectionHeader id={id} title={section.heading} html />
+  <Prose html={section.html} />
+</section>
+
+<style>
+  .story-section {
+    margin-top: 72px;
+  }
+  .table :global(.prose) {
+    max-width: 760px;
+    overflow-x: auto;
+  }
+  .quiet :global(.prose) {
+    font-size: var(--step--1);
+    color: var(--ink-2);
+    max-width: 80ch;
+  }
+</style>

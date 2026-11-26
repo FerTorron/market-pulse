@@ -1,0 +1,68 @@
+---
+// The whole page for one locale: loads the data, builds the story and lays out the containers.
+import SiteFooter from '@/components/layout/SiteFooter.astro';
+import SiteHeader from '@/components/layout/SiteHeader.astro';
+import FindingsContainer from '@/containers/FindingsContainer.astro';
+import HeroContainer from '@/containers/HeroContainer.astro';
+import KeyFiguresContainer from '@/containers/KeyFiguresContainer.astro';
+import ProcessTimelineContainer from '@/containers/ProcessTimelineContainer.astro';
+import StorySectionContainer from '@/containers/StorySectionContainer.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import type { Locale } from '@/i18n/config.ts';
+import { fill, getMessages } from '@/i18n/translations.ts';
+import { cumulativeModel, vixModel } from '@/lib/charts/chartModels.ts';
+import { loadSiteData } from '@/lib/data/loadSiteData.ts';
+import { parseStory } from '@/lib/story/parseStory.ts';
+import { getFormats } from '@pipeline/render.ts';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getMessages(locale);
+const F = getFormats(locale);
+const { market, status, storyMarkdown } = loadSiteData(locale);
+const story = parseStory(storyMarkdown);
+
+// The story template defines five sections, in this order.
+const [summary, findings, dayByDay, limits, sources] = story.sections;
+if (!summary || !findings || !dayByDay || !limits || !sources || story.sections.length !== 5) {
+  throw new Error(`The story must have exactly 5 "##" sections, found ${story.sections.length}`);
+}
+
+const period = { start: F.date!(market.meta.period_start), end: F.date!(market.meta.period_end) };
+const chartLabels = { worstDay: t.chart.worstDay, bestDay: t.chart.bestDay, dateColumn: t.chart.dateColumn, noData: t.chart.noData };
+const notice = status.validationPassed
+  ? undefined
+  : { title: t.notice.title, body: fill(t.notice.body, { series: status.missing.map((m) => m.series).join(', ') }) };
+---
+
+<BaseLayout locale={locale} title={t.meta.title} description={fill(t.meta.description, period)}>
+  <SiteHeader locale={locale} t={t.header} />
+  <main id="main">
+    <HeroContainer
+      eyebrow={fill(t.hero.eyebrow, period)}
+      title={story.title}
+      dek={story.dek}
+      summary={summary}
+      notice={notice}
+      chart={{
+        title: fill(t.chart.title, { base: F.date!(market.meta.base_date) }),
+        caption: t.chart.caption,
+        tableSummary: t.chart.tableSummary,
+        model: cumulativeModel(market, F, chartLabels),
+      }}
+    />
+    <KeyFiguresContainer market={market} formats={F} t={t.keyFigures} />
+    <FindingsContainer
+      section={findings}
+      vixChart={{ title: t.chart.vixTitle, caption: t.chart.vixCaption, tableSummary: t.chart.tableSummary, model: vixModel(market, F, chartLabels) }}
+    />
+    <StorySectionContainer id="day-by-day" section={dayByDay} variant="table" />
+    <StorySectionContainer id="limits" section={limits} />
+    <ProcessTimelineContainer t={t.process} />
+    <StorySectionContainer id="sources" section={sources} variant="quiet" />
+  </main>
+  <SiteFooter t={t.footer} dataNote={fill(t.footer.dataNote, { date: F.date!(status.downloadedAt.slice(0, 10)) })} />
+</BaseLayout>

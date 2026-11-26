@@ -1,0 +1,377 @@
+---
+// Line chart: the SVG only draws the lines (stretched to the box, strokes don't scale);
+// labels, ticks and the tooltip are HTML positioned with the same percentages, so text
+// stays readable at any width. Works without JavaScript; the script adds hover/keyboard.
+import type { LineChartModel } from '@/lib/charts/chartModels.ts';
+import { linePath, spreadLabels, xPct, yPct } from '@/lib/charts/scales.ts';
+
+interface Props {
+  id: string;
+  title: string;
+  caption: string;
+  tableSummary: string;
+  model: LineChartModel;
+  size?: 'tall' | 'short';
+}
+
+const { id, title, caption, tableSummary, model, size = 'tall' } = Astro.props;
+const n = model.dates.length;
+const ends = model.series.map((s) => {
+  let i = s.values.length - 1;
+  while (i > 0 && s.values[i] === null) i--;
+  return { x: xPct(i, n), y: yPct(s.values[i] ?? 0, model.domain) };
+});
+const labelY = spreadLabels(ends.map((e) => e.y), size === 'tall' ? 9 : 14);
+const tooltipJson = JSON.stringify({ points: model.dates.map((_, i) => xPct(i, n)), tooltip: model.tooltip });
+const multi = model.series.length > 1;
+---
+
+<figure class:list={['chart', size]} data-line-chart aria-labelledby={`${id}-title`}>
+  <figcaption>
+    <h3 id={`${id}-title`}>{title}</h3>
+    <p>{caption}</p>
+  </figcaption>
+
+  {
+    multi && (
+      <ul class="legend">
+        {model.series.map((s) => (
+          <li>
+            <span class="key" style={`background:${s.color}`} aria-hidden="true" />
+            <span>{s.name}</span>
+            <span class="data">{s.endLabel}</span>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  <div class="frame">
+    <div class="y-axis" aria-hidden="true">
+      {model.yTicks.map((t) => <span style={`top:${yPct(t.value, model.domain)}%`}>{t.label}</span>)}
+    </div>
+
+    <div class="plot" tabindex="0" role="img" aria-label={`${title}. ${caption}`} data-plot>
+      {model.yTicks.map((t) => <span class:list={['grid', { zero: model.zeroLine && t.value === 0 }]} style={`top:${yPct(t.value, model.domain)}%`} />)}
+      {
+        model.annotations.map((a, k) => (
+          <span class="annotation" style={`left:${xPct(a.index, n)}%`}>
+            {/* Labels in the right half go to the left of their line; each annotation gets its own row. */}
+            <span class:list={['annotation-label', xPct(a.index, n) > 50 ? 'left' : 'right']} style={`top:${k * 18 - 2}px`}>
+              {a.label}
+            </span>
+          </span>
+        ))
+      }
+      <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        {model.series.map((s) => <path d={linePath(s.values, model.domain)} style={`stroke:${s.color}`} />)}
+      </svg>
+      {ends.map((e, k) => <span class="end-dot" style={`left:${e.x}%;top:${e.y}%;background:${model.series[k]!.color}`} />)}
+      <span class="crosshair" data-crosshair hidden />
+      <div class="tooltip" data-tooltip hidden role="status" aria-live="polite"></div>
+    </div>
+
+    <div class="end-labels" aria-hidden="true">
+      {
+        model.series.map((s, k) => (
+          <span style={`top:${labelY[k]}%`}>
+            <span class="data">{s.endLabel}</span>
+            {multi && <span class="end-name">{s.name}</span>}
+          </span>
+        ))
+      }
+    </div>
+
+    <div class="x-axis" aria-hidden="true">
+      {
+        model.xTicks.map((t, i) => (
+          <span style={`left:${xPct(i, n)}%`}>
+            <span class="dow">{t.top}</span>
+            {t.bottom}
+          </span>
+        ))
+      }
+    </div>
+  </div>
+
+  <details class="table">
+    <summary>{tableSummary}</summary>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>{model.table.columns.map((c) => <th scope="col">{c}</th>)}</tr>
+        </thead>
+        <tbody>
+          {model.table.rows.map((r) => <tr>{r.map((c, i) => (i === 0 ? <th scope="row">{c}</th> : <td>{c}</td>))}</tr>)}
+        </tbody>
+      </table>
+    </div>
+  </details>
+
+  <script type="application/json" data-chart-data set:html={tooltipJson} />
+</figure>
+
+<script>
+  import { enhanceLineCharts } from '@/scripts/lineChart.ts';
+  enhanceLineCharts();
+</script>
+
+<style>
+  .chart {
+    margin: 0;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: clamp(16px, 3vw, 28px);
+  }
+  figcaption {
+    display: grid;
+    gap: 4px;
+    margin-bottom: 16px;
+  }
+  h3 {
+    font-size: var(--step-1);
+    font-weight: 700;
+  }
+  figcaption p {
+    font-size: var(--step--1);
+    color: var(--ink-2);
+    font-family: var(--font-data);
+  }
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+    margin: 0 0 16px;
+    padding: 0;
+    list-style: none;
+    font-family: var(--font-data);
+    font-size: var(--step--1);
+  }
+  .legend li {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .key {
+    width: 18px;
+    height: 3px;
+    border-radius: 2px;
+  }
+  .legend .data {
+    color: var(--ink-2);
+  }
+
+  .frame {
+    display: grid;
+    grid-template-columns: 52px 1fr 0;
+    grid-template-rows: var(--plot-h) 40px;
+    --plot-h: clamp(220px, 42vw, 380px);
+  }
+  .short .frame {
+    --plot-h: clamp(150px, 24vw, 200px);
+  }
+  @media (min-width: 720px) {
+    .frame {
+      grid-template-columns: 56px 1fr 132px;
+    }
+  }
+
+  .y-axis,
+  .plot,
+  .end-labels {
+    position: relative;
+  }
+  .y-axis span {
+    position: absolute;
+    right: 10px;
+    transform: translateY(-50%);
+    font-family: var(--font-data);
+    font-size: 0.75rem;
+    color: var(--ink-3);
+    white-space: nowrap;
+  }
+  .plot {
+    border-bottom: 1px solid var(--rule);
+    touch-action: pan-y;
+    cursor: crosshair;
+  }
+  .grid {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--grid);
+  }
+  .grid.zero {
+    background: var(--ink-3);
+  }
+  svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+  path {
+    fill: none;
+    stroke-width: 2.25;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+  }
+  .end-dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 0 2px var(--surface);
+  }
+  .annotation {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    border-left: 1px solid var(--ink-3);
+    opacity: 0.55;
+  }
+  .annotation-label {
+    position: absolute;
+    font-family: var(--font-data);
+    font-size: 0.72rem;
+    color: var(--ink);
+    white-space: nowrap;
+    background: var(--surface);
+    padding: 0 3px;
+  }
+  .annotation-label.right {
+    left: 6px;
+  }
+  .annotation-label.left {
+    right: 6px;
+  }
+  .end-labels {
+    display: none;
+  }
+  @media (min-width: 720px) {
+    .end-labels {
+      display: block;
+    }
+  }
+  .end-labels > span {
+    position: absolute;
+    left: 14px;
+    transform: translateY(-50%);
+    display: grid;
+    line-height: 1.15;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+  .end-name {
+    font-family: var(--font-data);
+    font-size: 0.7rem;
+    color: var(--ink-3);
+  }
+  .x-axis {
+    grid-column: 2;
+    position: relative;
+  }
+  .x-axis > span {
+    position: absolute;
+    top: 6px;
+    transform: translateX(-50%);
+    display: grid;
+    justify-items: center;
+    font-family: var(--font-data);
+    font-size: 0.75rem;
+    color: var(--ink-2);
+    line-height: 1.1;
+  }
+  .dow {
+    font-size: 0.62rem;
+    color: var(--ink-3);
+    text-transform: uppercase;
+  }
+  @media (max-width: 480px) {
+    .dow {
+      display: none;
+    }
+  }
+
+  .crosshair {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    border-left: 1px solid var(--ink);
+    pointer-events: none;
+  }
+  .tooltip {
+    position: absolute;
+    top: 8px;
+    min-width: 150px;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: var(--radius);
+    padding: 8px 10px;
+    font-family: var(--font-data);
+    font-size: 0.78rem;
+    line-height: 1.4;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .tooltip :global(.tt-heading) {
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .tooltip :global(.tt-row) {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .tooltip :global(.tt-key) {
+    width: 10px;
+    height: 3px;
+    border-radius: 2px;
+  }
+  .tooltip :global(.tt-value) {
+    margin-left: auto;
+    padding-left: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .table {
+    margin-top: 12px;
+    font-family: var(--font-data);
+    font-size: var(--step--1);
+  }
+  summary {
+    cursor: pointer;
+    color: var(--ink-2);
+  }
+  .table-scroll {
+    overflow-x: auto;
+    margin-top: 10px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-variant-numeric: tabular-nums;
+  }
+  th,
+  td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--rule);
+    text-align: right;
+    white-space: nowrap;
+  }
+  th:first-child {
+    text-align: left;
+    font-weight: 400;
+  }
+  thead th {
+    color: var(--ink-2);
+    font-weight: 500;
+  }
+</style>

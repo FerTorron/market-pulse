@@ -1,0 +1,86 @@
+{
+  "meta": {
+    "title": "Market Pulse · La bolsa de EE.UU. en dos semanas",
+    "description": "Qué hizo la bolsa de EE.UU. entre el {start} y el {end}, explicado para alguien sin conocimientos financieros, y cómo se hizo con Claude."
+  },
+  "header": {
+    "brand": "market pulse",
+    "languageNav": "Idioma",
+    "skipToContent": "Ir al contenido"
+  },
+  "notice": {
+    "title": "Borrador con datos incompletos",
+    "body": "FRED todavía no publicó el cierre del último día para {series}. Esas series llegan hasta la última fecha publicada, así que las comparaciones entre índices todavía no son válidas."
+  },
+  "hero": {
+    "eyebrow": "Bolsa de EE.UU. · del {start} al {end}"
+  },
+  "chart": {
+    "title": "Cuánto subió o bajó cada índice desde el cierre del {base}",
+    "caption": "Variación acumulada, cierre contra cierre. Pasá el cursor o tocá el gráfico para ver cada día.",
+    "worstDay": "Peor día del S&P y el Nasdaq",
+    "bestDay": "Mejor día",
+    "vixTitle": "VIX: cuánto movimiento espera el mercado",
+    "vixCaption": "Nivel del índice cada día. Más alto quiere decir que se esperan más sacudones.",
+    "tableSummary": "Ver los datos del gráfico como tabla",
+    "dateColumn": "Día",
+    "noData": "s/d"
+  },
+  "keyFigures": {
+    "title": "Las cifras del período",
+    "inPeriod": "en el período",
+    "vixPeak": "VIX en su máximo",
+    "vixPeakOn": "el {date}",
+    "rate": "Cambio de la tasa a 10 años",
+    "rateChange": "{from} → {to}"
+  },
+  "process": {
+    "eyebrow": "Cómo lo hice",
+    "title": "Un sistema que pone a prueba a la IA",
+    "intro": "Todo se hizo con Claude, con dos tipos de control: el código frena el armado si aparece un dígito escrito a mano o si los datos contradicen lo que el texto da por cierto, y un agente verificador revisa lo que el código no puede ver, como causas sin respaldo o fuentes que se copian entre sí.",
+    "phaseLabel": "Fase {n}",
+    "evidence": "Evidencia",
+    "byAuthor": "Hecha por mí, con Claude",
+    "phases": {
+      "brief": {
+        "title": "Entender la consigna",
+        "body": "Analicé con Claude la consigna y el puesto. Definimos el período, una audiencia sin conocimientos financieros con poco tiempo, qué métricas mirar y qué dejar afuera: predicciones y recomendaciones."
+      },
+      "plan": {
+        "title": "Planificar antes de construir",
+        "body": "Claude propuso un plan y esperó mi aprobación. Al planificar detectó que el feriado de Veterans Day cierra el mercado de bonos pero no la bolsa, y que eso tenía que estar previsto en los controles."
+      },
+      "data": {
+        "title": "Datos con red de seguridad",
+        "body": "Los scripts bajan las series de FRED, guardan cada archivo con su huella digital y recalculan todo por separado para comparar. Yahoo Finance se usa solo como control, nunca para completar datos."
+      },
+      "render": {
+        "title": "Ninguna cifra de mercado escrita a mano",
+        "body": "La historia es una plantilla con marcadores que se llenan desde los datos. Si aparece un dígito fuera de los marcadores y de una lista corta de frases permitidas, o si los datos dejan de cumplir alguna de las condiciones que el texto da por ciertas, el armado falla. El control de dígitos frenó el primer borrador de Claude."
+      },
+      "agents": {
+        "title": "Tres agentes con roles separados",
+        "body": "Uno corre los datos y no interpreta. Otro investiga qué pasó cada día, con fecha y link. Un verificador puede rechazar afirmaciones: causas sin evidencia, una sola fuente, fuentes que se copian entre sí, fechas mal."
+      },
+      "run": {
+        "title": "La primera corrida",
+        "body": "El verificador rechazó afirmaciones con una sola fuente, fechas equivocadas y causas sin respaldo, varias de ellas escritas por Claude, y encontró un error en el código. FRED todavía no había publicado el último día y el sistema no rellenó nada."
+      },
+      "site": {
+        "title": "Este sitio",
+        "body": "Estático y bilingüe, hecho con Astro. Lee los mismos archivos que genera el pipeline y pasa por los mismos controles, en los dos idiomas."
+      }
+    },
+    "links": {
+      "repo": "Ver el código y la bitácora completa",
+      "decisions": "Qué hizo mal Claude y qué se cambió"
+    }
+  },
+  "footer": {
+    "madeBy": "Hecho por",
+    "portfolio": "Portfolio",
+    "repo": "Código en GitHub",
+    "dataNote": "Datos de FRED, descargados el {date}. Ninguna cifra de mercado de esta página fue escrita a mano.",
+    "disclaimer": "No es una recomendación de inversión."
+  }
+}

@@ -53,6 +53,12 @@ describe('metrics', () => {
     expect(s.up_days).toBe(2);
     expect(s.down_days).toBe(1);
     expect(s.max_drawdown_pct).toBe(-10);
+    expect(s.path).toEqual([
+      { date: '2026-11-10', cum_pct: 0 },
+      { date: '2026-11-12', cum_pct: 10 },
+      { date: '2026-11-13', cum_pct: -1 },
+      { date: '2026-11-17', cum_pct: 4.5 },
+    ]);
   });
 
   it('summarizeIndex falla si falta la base', () => {

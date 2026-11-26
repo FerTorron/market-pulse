@@ -1,0 +1,48 @@
+---
+// The headline figures of the period, straight from market-data.json.
+import StatFigure from '@/components/ui/StatFigure.astro';
+import SectionHeader from '@/components/ui/SectionHeader.astro';
+import type { Formatter } from '@pipeline/render.ts';
+import { fill, type Messages } from '@/i18n/translations.ts';
+import type { MarketData } from '@/types/market.ts';
+
+interface Props {
+  market: MarketData;
+  formats: Record<string, Formatter>;
+  t: Messages['keyFigures'];
+}
+
+const { market, formats: F, t } = Astro.props;
+const f = (name: string, v: unknown) => F[name]!(v);
+
+const figures = [
+  { label: 'S&P 500', value: f('pct', market.sp500.cum_pct), detail: t.inPeriod, swatch: 'var(--series-1)' },
+  { label: 'Nasdaq', value: f('pct', market.nasdaq.cum_pct), detail: t.inPeriod, swatch: 'var(--series-2)' },
+  { label: 'Dow Jones', value: f('pct', market.dow.cum_pct), detail: t.inPeriod, swatch: 'var(--series-3)' },
+  { label: t.vixPeak, value: f('num', market.vix.high!.value), detail: fill(t.vixPeakOn, { date: f('date', market.vix.high!.date) }) },
+  {
+    label: t.rate,
+    value: f('bp', market.us10y.change_bp),
+    detail: fill(t.rateChange, { from: f('rate', market.us10y.base.value), to: f('rate', market.us10y.end.value) }),
+  },
+];
+---
+
+<section class="page key-figures" aria-labelledby="key-figures">
+  <SectionHeader id="key-figures" title={t.title} />
+  <dl>
+    {figures.map((fig) => <StatFigure {...fig} />)}
+  </dl>
+</section>
+
+<style>
+  .key-figures {
+    margin-top: 32px;
+  }
+  dl {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 0 28px;
+    margin: 0;
+  }
+</style>

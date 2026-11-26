@@ -5,7 +5,7 @@ Análisis de la bolsa de EE.UU. del 11 al 25 de noviembre de 2026, hecho exclusi
 - Qué y para quién: [`BRIEF.md`](BRIEF.md)
 - Cómo se hizo, fase por fase: [`research/PROCESS.md`](research/PROCESS.md)
 - Decisiones y errores de Claude: [`research/DECISIONS.md`](research/DECISIONS.md)
-- Resultado: [`research/STORY.md`](research/STORY.md)
+- Resultado: [`research/STORY.md`](research/STORY.md) (ES) y [`research/STORY.en.md`](research/STORY.en.md) (EN), y el sitio en [`site/`](site/README.md)
 
 ## Cómo funciona
 
@@ -42,5 +42,15 @@ pnpm test          # tests de compute
 ```
 
 En Claude Code: `/market-report`.
+
+### Sitio
+
+Página estática y bilingüe (ES por defecto, EN en `/en/`) hecha con Astro, en [`site/`](site/README.md). No copia datos ni texto: arma la historia en el build con el mismo código del pipeline y pasa por los mismos controles.
+
+```bash
+pnpm --dir site dev                       # http://localhost:4321
+pnpm --dir site build                     # falla si la validación no pasó
+ALLOW_INCOMPLETE=1 pnpm --dir site build  # borrador con aviso visible
+```
 
 No usa claves: FRED se baja por `fredgraph.csv`, Yahoo por su endpoint público de gráficos (solo para validar).

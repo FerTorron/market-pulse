@@ -1,0 +1,77 @@
+/* Design tokens. Every color and type decision on the page comes from here.
+   Palette: cool "graph paper" surface, navy ink. Series colors validated with the dataviz
+   validator (light vs #fbfcfd, dark vs #141b23): all checks pass; aqua is below 3:1 in light,
+   so every chart ships direct labels and a table view. */
+:root {
+  color-scheme: light;
+  --paper: #f2f5f7;
+  --surface: #fbfcfd;
+  --ink: #0e1a26;
+  --ink-2: #44566a;
+  --ink-3: #5c6d7e;
+  --rule: #d3dce3;
+  --grid: #e3e9ee;
+  --grid-paper: rgb(14 26 38 / 0.05);
+  --series-1: #2a78d6; /* S&P 500 */
+  --series-2: #eb6834; /* Nasdaq */
+  --series-3: #1baf7a; /* Dow */
+  --notice-bg: #fff3d1;
+  --notice-ink: #4d3a00;
+  --notice-rule: #e8c766;
+  --focus: #2a78d6;
+
+  --font-display: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-data: 'IBM Plex Mono', ui-monospace, 'Cascadia Mono', monospace;
+
+  --step--1: clamp(0.8rem, 0.78rem + 0.1vw, 0.86rem);
+  --step-0: clamp(1.06rem, 1.02rem + 0.2vw, 1.18rem);
+  --step-1: clamp(1.25rem, 1.18rem + 0.35vw, 1.45rem);
+  --step-2: clamp(1.5rem, 1.35rem + 0.75vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3.4rem);
+
+  --measure: 64ch;
+  --page: 1120px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --radius: 6px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --paper: #0d131a;
+    --surface: #141b23;
+    --ink: #e8eef3;
+    --ink-2: #aebccb;
+    --ink-3: #8c9cab;
+    --rule: #263340;
+    --grid: #1e2a35;
+    --grid-paper: rgb(232 238 243 / 0.04);
+    --series-1: #3987e5;
+    --series-2: #d95926;
+    --series-3: #199e70;
+    --notice-bg: #2b2310;
+    --notice-ink: #f3d68f;
+    --notice-rule: #6b5414;
+    --focus: #7fb1f0;
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --paper: #0d131a;
+  --surface: #141b23;
+  --ink: #e8eef3;
+  --ink-2: #aebccb;
+  --ink-3: #8c9cab;
+  --rule: #263340;
+  --grid: #1e2a35;
+  --grid-paper: rgb(232 238 243 / 0.04);
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --series-3: #199e70;
+  --notice-bg: #2b2310;
+  --notice-ink: #f3d68f;
+  --notice-rule: #6b5414;
+  --focus: #7fb1f0;
+}

@@ -1,0 +1,111 @@
+---
+// The thesis of the page: the story's conclusion, set over the chart of the two weeks.
+import LineChart from '@/components/charts/LineChart.astro';
+import Notice from '@/components/ui/Notice.astro';
+import Prose from '@/components/ui/Prose.astro';
+import type { LineChartModel } from '@/lib/charts/chartModels.ts';
+import type { StorySection } from '@/lib/story/parseStory.ts';
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  dek: string;
+  summary: StorySection;
+  chart: { title: string; caption: string; tableSummary: string; model: LineChartModel };
+  notice?: { title: string; body: string };
+}
+
+const { eyebrow, title, dek, summary, chart, notice } = Astro.props;
+---
+
+<section class="hero" aria-labelledby="story-title">
+  <div class="page inner">
+    {notice && <Notice title={notice.title} body={notice.body} />}
+    <p class="eyebrow">{eyebrow}</p>
+    <h1 id="story-title" set:html={title} />
+    <p class="dek" set:html={dek} />
+    <LineChart id="cumulative" {...chart} />
+    <div class="summary">
+      <h2 set:html={summary.heading} />
+      <Prose html={summary.html} class="summary-list" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    isolation: isolate;
+    padding-bottom: 48px;
+  }
+  /* Signature: graph-paper grid behind the thesis, fading out toward the content.
+     It lives on a pseudo-element so the fade never touches the text. */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image:
+      linear-gradient(var(--grid-paper) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-paper) 1px, transparent 1px);
+    background-size: 24px 24px;
+    mask-image: linear-gradient(to bottom, #000 60%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent);
+  }
+  .inner {
+    display: grid;
+    gap: 20px;
+    padding-top: clamp(24px, 5vw, 56px);
+  }
+  .eyebrow {
+    font-family: var(--font-data);
+    font-size: var(--step--1);
+    color: var(--ink-2);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  h1 {
+    font-size: var(--step-3);
+    font-weight: 800;
+    max-width: 22ch;
+    letter-spacing: -0.035em;
+    font-variation-settings: 'opsz' 96;
+  }
+  .dek {
+    font-size: var(--step-1);
+    color: var(--ink-2);
+    max-width: 52ch;
+    font-style: italic;
+  }
+  .summary {
+    display: grid;
+    gap: 12px;
+    margin-top: 12px;
+  }
+  .summary h2 {
+    font-size: var(--step-1);
+    font-weight: 700;
+  }
+  .summary :global(.summary-list ul) {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 16px;
+  }
+  .summary :global(.summary-list li + li) {
+    margin-top: 0;
+  }
+  .summary :global(.summary-list) {
+    max-width: none;
+  }
+  @media (min-width: 860px) {
+    .summary :global(.summary-list ul) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .summary :global(.summary-list li) {
+      border-top: 2px solid var(--ink);
+      padding-top: 12px;
+    }
+  }
+</style>

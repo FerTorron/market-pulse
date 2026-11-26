@@ -108,6 +108,11 @@ for (const s of SERIES) {
 
   if (s.kind === 'index') {
     chk('variación acumulada %', ((last.v - base.v) / base.v) * 100, m.cum_pct);
+    if (m.path?.length !== pts.length) add('error', 'recompute', `path: ${m.path?.length} puntos vs ${pts.length} esperados`, s.fredId);
+    pts.forEach((p, i) => {
+      if (m.path?.[i]?.date !== p.date) add('error', 'recompute', `path ${i}: fecha ${m.path?.[i]?.date} vs ${p.date}`, s.fredId);
+      else chk(`path ${p.date}`, ((p.v - base.v) / base.v) * 100, m.path[i].cum_pct);
+    });
     const worst = dailyPct.reduce((a, b) => (b.pct < a.pct ? b : a));
     chk('peor rueda %', worst.pct, m.worst_day?.pct);
     if (worst.date !== m.worst_day?.date) add('error', 'recompute', `peor rueda: ${worst.date} vs ${m.worst_day?.date}`, s.fredId);

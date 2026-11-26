@@ -1,0 +1,13 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "paths": {
+      "@pipeline/*": ["../scripts/lib/*"],
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": [".astro/types.d.ts", "src/**/*", "../scripts/lib/**/*"],
+  "exclude": ["dist"]
+}

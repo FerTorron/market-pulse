@@ -110,3 +110,27 @@ _A cargar por Fernando._
 **7. Render.** `render --check` pasa. `render` se niega a generar `STORY.md` porque la validación es FAIL. Queda pendiente de los datos del 25/11 o de la decisión de generar un borrador marcado como incompleto.
 
 **Evidencia:** `evidence/data-agent-run.txt`, `evidence/audit-eventos.md`, `evidence/market-report-render.txt`, `research/audit.md`.
+
+---
+
+## Fase 6 — Sitio
+
+**Qué se hizo.** Una página estática y bilingüe en `site/`, hecha con Astro: español por defecto y English en `/en/`. Tiene la historia, un gráfico de la variación acumulada de los tres índices, otro del VIX, las cifras del período, la línea de tiempo "Cómo lo hice" y un pie con link al portfolio.
+
+**Qué se decidió y por qué.**
+- **Astro en vez de Next.js** (D10). El sitio es contenido estático que sale del repo. Al navegador solo llega el JavaScript del tooltip.
+- **El sitio no copia nada** (D11). Arma la historia en el build con el mismo `render.ts` del pipeline, así que un dígito a mano, una aserción que falla o datos sin validar frenan el build. Con `ALLOW_INCOMPLETE=1` sale un borrador con un aviso visible.
+- **Inglés con los mismos controles** (D12). Hay una plantilla en inglés con el bloque de aserciones idéntico, controlado por un test. El render pasó a soportar los dos idiomas (formatos `es-AR` y `en-US`).
+- **Estructura pedida por Fernando** (D13): `pages`, `views`, `containers`, `components/{ui,charts,layout}`, `lib`, `scripts`, `config`, `styles`, `types`. Los textos van en un archivo por idioma (`i18n/locales`), también controlados contra dígitos a mano.
+- **Gráficos:** la paleta se validó con un script, no a ojo. El SVG solo dibuja las líneas; los textos son HTML, así se leen bien en el celular. Hay tooltip con mouse, toque y teclado, y una tabla con los mismos datos.
+- **`compute.ts` ahora también calcula la serie acumulada por día** (`path`), que es lo que dibuja el gráfico. `validate.ts` la recalcula. El navegador no hace cuentas.
+
+**Errores encontrados en la revisión visual y el build:** E12 a E14 en DECISIONS.
+
+**verifier, pasada 4: inglés y textos del sitio** (`research/audit.md`; la pasada 3 quedó en `evidence/audit-borrador.md`). 36 aprobadas, 12 para reformular y 0 rechazadas.
+- Dos citas en inglés no eran textuales y una minuta de la Fed se había parafraseado de más. Ese error venía del español ya aprobado (C33) y lo arrastraba el inglés.
+- Los textos de "Cómo lo hice" exageraban el control ("un sistema que no le cree a la IA", "el código frena lo que está mal") y repetían el error de "ningún número escrito a mano".
+- "Peor día" en el gráfico no aplicaba al Dow, y la cifra "Tasa a 10 años" mostraba un cambio, no una tasa.
+- Se aplicó todo menos un punto: el verifier pidió sacar "Hecha por mí, con Claude" de la fase 0 porque PROCESS.md todavía no la documenta. Se mantuvo porque lo afirma Fernando en su consigna, pero queda pendiente que cargue la Fase 0 con su captura.
+
+**Evidencia:** `site/`, `tests/i18n.test.ts`, `tests/site-charts.test.ts`.
