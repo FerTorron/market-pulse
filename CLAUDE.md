@@ -19,7 +19,7 @@ Proyecto: análisis de la bolsa de EE.UU. del 11 al 25 de noviembre de 2026 para
 
 ## Cómo trabajar
 
-- Pipeline: `pnpm fetch` → `pnpm compute` → `pnpm validate` → `pnpm render`. Todo junto: `pnpm pipeline`.
+- Pipeline: `pnpm data:fetch` → `pnpm data:compute` → `pnpm data:validate` → `pnpm render` (los tres primeros juntos: `pnpm data`). Todo junto: `pnpm pipeline`.
 - Orquestación: `/market-report` (ver `.claude/commands/market-report.md`).
 - Al terminar cada fase: actualizar `research/PROCESS.md` y, si Claude se equivocó en algo real, `research/DECISIONS.md`.
 - Salida de corridas que sirve como evidencia → `evidence/`. Logs de trabajo descartables → fuera del repo.

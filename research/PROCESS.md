@@ -23,3 +23,20 @@ _A cargar por Fernando._
 - **Un commit por fase**, para que el historial de git también sea evidencia.
 
 **Evidencia sugerida:** captura del plan propuesto y del mensaje de aprobación.
+
+---
+
+## Fase 2 — Pipeline de datos
+
+**Qué se hizo.** Claude escribió `scripts/fetch.ts`, `compute.ts`, `validate.ts` y una librería de funciones puras (`scripts/lib/metrics.ts`) con 8 tests (`tests/metrics.test.ts`). Se corrió el pipeline contra FRED y Yahoo.
+
+**Qué se decidió y por qué.**
+- **`fetch.ts` guarda los archivos tal cual llegan** más un `manifest.json` con URL, fecha de descarga y SHA-256. `validate.ts` verifica los hashes: si alguien edita un CSV a mano, falla.
+- **`validate.ts` recalcula de forma independiente**, sin importar `metrics.ts`, para que un bug en la librería no se valide a sí mismo.
+- **El calendario de ruedas está escrito en `config.ts`**, no se deduce de los datos: así se detectan tanto fechas faltantes como sobrantes.
+- **Yahoo solo como control.** Sus valores van a `cross-check.json` y nunca entran en `market-data.json`.
+- **Tolerancias de la validación cruzada:** ±0,05 % para índices y VIX; ±2 pb para la tasa a 10 años (ver D5 y E2 en DECISIONS).
+
+**Resultado de la primera corrida** (`evidence/fase2-pipeline-run1.txt`): FRED todavía no había publicado el cierre del 25/11 para SP500, VIXCLS y DGS10 (sí para NASDAQCOM y DJIA). `validate` falló como estaba previsto y no se rellenó nada. Nasdaq y Dow coinciden con Yahoo dentro de ±0,05 %. Yahoo trae `^TNX` el 11/11 (el CBOE opera en Veterans Day); se registra y no se usa.
+
+**Evidencia:** `evidence/fase2-pipeline-run1.txt`, `data/processed/validation-report.json`, `data/processed/cross-check.json`.

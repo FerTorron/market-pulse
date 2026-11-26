@@ -3,12 +3,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "fetch": "tsx scripts/fetch.ts",
-    "compute": "tsx scripts/compute.ts",
-    "validate": "tsx scripts/validate.ts",
+    "data:fetch": "tsx scripts/fetch.ts",
+    "data:compute": "tsx scripts/compute.ts",
+    "data:validate": "tsx scripts/validate.ts",
+    "data": "pnpm data:fetch && pnpm data:compute && pnpm data:validate",
     "render": "tsx scripts/render-story.ts",
-    "pipeline": "pnpm fetch && pnpm compute && pnpm validate && pnpm render",
-    "data": "pnpm fetch && pnpm compute && pnpm validate",
+    "pipeline": "pnpm data && pnpm render",
     "test": "vitest run",
     "typecheck": "tsc --noEmit"
   },

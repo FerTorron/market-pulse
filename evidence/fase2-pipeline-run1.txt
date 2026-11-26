@@ -1,0 +1,34 @@
+$ pnpm data:fetch && pnpm data:compute && pnpm data:validate
+$ tsx scripts/fetch.ts
+FRED  SP500      filas=16 último dato=2026-11-24
+FRED  NASDAQCOM  filas=17 último dato=2026-11-25
+FRED  DJIA       filas=17 último dato=2026-11-25
+FRED  VIXCLS     filas=16 último dato=2026-11-24
+FRED  DGS10      filas=16 último dato=2026-11-24
+Yahoo ^GSPC      ok (solo validación)
+Yahoo ^IXIC      ok (solo validación)
+Yahoo ^DJI       ok (solo validación)
+Yahoo ^VIX       ok (solo validación)
+Yahoo ^TNX       ok (solo validación)
+Manifest: data/raw/manifest.json (descargado 2026-11-26T16:41:49.512Z)
+$ tsx scripts/compute.ts
+OK data/processed/market-data.json · completo=false
+  FALTA SP500: 2026-11-25
+  FALTA VIXCLS: 2026-11-25
+  FALTA DGS10: 2026-11-25
+$ tsx scripts/validate.ts
+[ERROR  ] SP500      missing-dates    faltan: 2026-11-25
+[WARNING] SP500      cross-check      Yahoo tiene fechas que FRED no: 2026-11-25 (no se usan)
+[INFO   ] NASDAQCOM  cross-check      coincide con Yahoo ^IXIC dentro de ±0.05%
+[INFO   ] DJIA       cross-check      coincide con Yahoo ^DJI dentro de ±0.05%
+[ERROR  ] VIXCLS     missing-dates    faltan: 2026-11-25
+[WARNING] VIXCLS     cross-check      Yahoo tiene fechas que FRED no: 2026-11-25 (no se usan)
+[INFO   ] DGS10      nulls            2026-11-11 sin valor (feriado de bonos, esperado)
+[ERROR  ] DGS10      missing-dates    faltan: 2026-11-25
+[WARNING] DGS10      cross-check      8 fechas difieren o faltan vs Yahoo ^TNX: 2026-11-10(difiere 0.0602%), 2026-11-12(difiere 0.0588%), 2026-11-13(difiere 0.0777%), 2026-11-17(difiere 0.0588%), 2026-11-18(difiere -0.0789%), 2026-11-19(difiere 0.2381%), 2026-11-20(difiere -0.1626%), 2026-11-24(difiere -0.1222%)
+[WARNING] DGS10      cross-check      Yahoo tiene fechas que FRED no: 2026-11-11, 2026-11-25 (no se usan)
+[ERROR  ] -          completeness     market-data.json marcado incompleto: [{"series":"SP500","dates":["2026-11-25"]},{"series":"VIXCLS","dates":["2026-11-25"]},{"series":"DGS10","dates":["2026-11-25"]}]
+
+Validación: FAIL · 4 errores · 4 advertencias
+[ELIFECYCLE] Command failed with exit code 1.
+[ELIFECYCLE] Command failed with exit code 1.

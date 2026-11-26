@@ -1,0 +1,455 @@
+{
+  "generated_at": "2026-11-26T16:42:13.332Z",
+  "note": "Yahoo Finance se usa SOLO como control. Ningún valor de Yahoo entra en market-data.json.",
+  "series": {
+    "SP500": {
+      "yahoo_symbol": "^GSPC",
+      "tolerance": "±0.05%",
+      "rows": [
+        {
+          "date": "2026-11-10",
+          "fred": 7520.93,
+          "yahoo": 7520.9302,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-11",
+          "fred": 7619.38,
+          "yahoo": 7619.3799,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-12",
+          "fred": 7592.4,
+          "yahoo": 7592.3999,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-13",
+          "fred": 7561.67,
+          "yahoo": 7561.6699,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-16",
+          "fred": 7416.59,
+          "yahoo": 7416.5898,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-17",
+          "fred": 7340.53,
+          "yahoo": 7340.5298,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-18",
+          "fred": 7323.63,
+          "yahoo": 7323.6299,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-19",
+          "fred": 7175.83,
+          "yahoo": 7175.8301,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-20",
+          "fred": 6910.39,
+          "yahoo": 6910.3901,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-23",
+          "fred": 7237.17,
+          "yahoo": 7237.1699,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-24",
+          "fred": 7201.09,
+          "yahoo": 7201.0898,
+          "diff_pct": 0,
+          "flag": "ok"
+        }
+      ],
+      "dates_only_in_yahoo": [
+        "2026-11-25"
+      ],
+      "flagged": 0
+    },
+    "NASDAQCOM": {
+      "yahoo_symbol": "^IXIC",
+      "tolerance": "±0.05%",
+      "rows": [
+        {
+          "date": "2026-11-10",
+          "fred": 25065.87,
+          "yahoo": 25065.8691,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-11",
+          "fred": 25466.19,
+          "yahoo": 25466.1895,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-12",
+          "fred": 25366.09,
+          "yahoo": 25366.0898,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-13",
+          "fred": 25136.27,
+          "yahoo": 25136.2695,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-16",
+          "fred": 24509.76,
+          "yahoo": 24509.7598,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-17",
+          "fred": 24328.38,
+          "yahoo": 24328.3809,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-18",
+          "fred": 24429.88,
+          "yahoo": 24429.8809,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-19",
+          "fred": 23879.2,
+          "yahoo": 23879.1992,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-20",
+          "fred": 22617.73,
+          "yahoo": 22617.7305,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-23",
+          "fred": 24089.56,
+          "yahoo": 24089.5605,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-24",
+          "fred": 23733.54,
+          "yahoo": 23733.5391,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-25",
+          "fred": 23585.8,
+          "yahoo": 23585.8008,
+          "diff_pct": 0,
+          "flag": "ok"
+        }
+      ],
+      "dates_only_in_yahoo": [],
+      "flagged": 0
+    },
+    "DJIA": {
+      "yahoo_symbol": "^DJI",
+      "tolerance": "±0.05%",
+      "rows": [
+        {
+          "date": "2026-11-10",
+          "fred": 52231.89,
+          "yahoo": 52231.8906,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-11",
+          "fred": 52486.49,
+          "yahoo": 52486.4883,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-12",
+          "fred": 52297.09,
+          "yahoo": 52297.0898,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-13",
+          "fred": 52347.55,
+          "yahoo": 52347.5508,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-16",
+          "fred": 51608.17,
+          "yahoo": 51608.1719,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-17",
+          "fred": 50759.42,
+          "yahoo": 50759.4219,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-18",
+          "fred": 50198.17,
+          "yahoo": 50198.1719,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-19",
+          "fred": 49097.06,
+          "yahoo": 49097.0586,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-20",
+          "fred": 48147.33,
+          "yahoo": 48147.3281,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-23",
+          "fred": 49595.31,
+          "yahoo": 49595.3086,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-24",
+          "fred": 50018.7,
+          "yahoo": 50018.6992,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-25",
+          "fred": 50182.95,
+          "yahoo": 50182.9492,
+          "diff_pct": 0,
+          "flag": "ok"
+        }
+      ],
+      "dates_only_in_yahoo": [],
+      "flagged": 0
+    },
+    "VIXCLS": {
+      "yahoo_symbol": "^VIX",
+      "tolerance": "±0.05%",
+      "rows": [
+        {
+          "date": "2026-11-10",
+          "fred": 19.46,
+          "yahoo": 19.46,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-11",
+          "fred": 17.49,
+          "yahoo": 17.49,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-12",
+          "fred": 18.7,
+          "yahoo": 18.7,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-13",
+          "fred": 19.3,
+          "yahoo": 19.3,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-16",
+          "fred": 22.91,
+          "yahoo": 22.91,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-17",
+          "fred": 25.46,
+          "yahoo": 25.46,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-18",
+          "fred": 24.56,
+          "yahoo": 24.56,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-19",
+          "fred": 28.44,
+          "yahoo": 28.44,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-20",
+          "fred": 35.89,
+          "yahoo": 35.89,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-23",
+          "fred": 26.62,
+          "yahoo": 26.62,
+          "diff_pct": 0,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-24",
+          "fred": 26.36,
+          "yahoo": 26.36,
+          "diff_pct": 0,
+          "flag": "ok"
+        }
+      ],
+      "dates_only_in_yahoo": [
+        "2026-11-25"
+      ],
+      "flagged": 0
+    },
+    "DGS10": {
+      "yahoo_symbol": "^TNX",
+      "tolerance": "±2 pb",
+      "rows": [
+        {
+          "date": "2026-11-10",
+          "fred": 4.98,
+          "yahoo": 4.983,
+          "diff_pct": 0.0602,
+          "diff_bp": 0.3,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-12",
+          "fred": 5.1,
+          "yahoo": 5.103,
+          "diff_pct": 0.0588,
+          "diff_bp": 0.3,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-13",
+          "fred": 5.15,
+          "yahoo": 5.154,
+          "diff_pct": 0.0777,
+          "diff_bp": 0.4,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-16",
+          "fred": 5.12,
+          "yahoo": 5.121,
+          "diff_pct": 0.0195,
+          "diff_bp": 0.1,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-17",
+          "fred": 5.1,
+          "yahoo": 5.103,
+          "diff_pct": 0.0588,
+          "diff_bp": 0.3,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-18",
+          "fred": 5.07,
+          "yahoo": 5.066,
+          "diff_pct": -0.0789,
+          "diff_bp": -0.4,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-19",
+          "fred": 5.04,
+          "yahoo": 5.052,
+          "diff_pct": 0.2381,
+          "diff_bp": 1.2,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-20",
+          "fred": 4.92,
+          "yahoo": 4.912,
+          "diff_pct": -0.1626,
+          "diff_bp": -0.8,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-23",
+          "fred": 4.92,
+          "yahoo": 4.918,
+          "diff_pct": -0.0406,
+          "diff_bp": -0.2,
+          "flag": "ok"
+        },
+        {
+          "date": "2026-11-24",
+          "fred": 4.91,
+          "yahoo": 4.904,
+          "diff_pct": -0.1222,
+          "diff_bp": -0.6,
+          "flag": "ok"
+        }
+      ],
+      "dates_only_in_yahoo": [
+        "2026-11-11",
+        "2026-11-25"
+      ],
+      "flagged": 0
+    }
+  }
+}

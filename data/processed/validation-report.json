@@ -1,0 +1,67 @@
+{
+  "validated_at": "2026-11-26T16:42:13.332Z",
+  "status": "FAIL",
+  "errors": 4,
+  "warnings": 3,
+  "findings": [
+    {
+      "level": "error",
+      "check": "missing-dates",
+      "detail": "faltan: 2026-11-25",
+      "series": "SP500"
+    },
+    {
+      "level": "warning",
+      "check": "cross-check",
+      "detail": "Yahoo tiene fechas que FRED no: 2026-11-25 (no se usan)",
+      "series": "SP500"
+    },
+    {
+      "level": "info",
+      "check": "cross-check",
+      "detail": "coincide con Yahoo ^IXIC dentro de ±0.05%",
+      "series": "NASDAQCOM"
+    },
+    {
+      "level": "info",
+      "check": "cross-check",
+      "detail": "coincide con Yahoo ^DJI dentro de ±0.05%",
+      "series": "DJIA"
+    },
+    {
+      "level": "error",
+      "check": "missing-dates",
+      "detail": "faltan: 2026-11-25",
+      "series": "VIXCLS"
+    },
+    {
+      "level": "warning",
+      "check": "cross-check",
+      "detail": "Yahoo tiene fechas que FRED no: 2026-11-25 (no se usan)",
+      "series": "VIXCLS"
+    },
+    {
+      "level": "info",
+      "check": "nulls",
+      "detail": "2026-11-11 sin valor (feriado de bonos, esperado)",
+      "series": "DGS10"
+    },
+    {
+      "level": "error",
+      "check": "missing-dates",
+      "detail": "faltan: 2026-11-25",
+      "series": "DGS10"
+    },
+    {
+      "level": "warning",
+      "check": "cross-check",
+      "detail": "Yahoo tiene fechas que FRED no: 2026-11-11, 2026-11-25 (no se usan)",
+      "series": "DGS10"
+    },
+    {
+      "level": "error",
+      "check": "completeness",
+      "detail": "market-data.json marcado incompleto: [{\"series\":\"SP500\",\"dates\":[\"2026-11-25\"]},{\"series\":\"VIXCLS\",\"dates\":[\"2026-11-25\"]},{\"series\":\"DGS10\",\"dates\":[\"2026-11-25\"]}]"
+    }
+  ]
+}

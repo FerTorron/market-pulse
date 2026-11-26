@@ -1,0 +1,590 @@
+{
+  "meta": {
+    "generated_at": "2026-11-26T16:41:52.941Z",
+    "data_downloaded_at": "2026-11-26T16:41:49.512Z",
+    "base_date": "2026-11-10",
+    "period_start": "2026-11-11",
+    "period_end": "2026-11-25",
+    "complete": false,
+    "missing": [
+      {
+        "series": "SP500",
+        "dates": [
+          "2026-11-25"
+        ]
+      },
+      {
+        "series": "VIXCLS",
+        "dates": [
+          "2026-11-25"
+        ]
+      },
+      {
+        "series": "DGS10",
+        "dates": [
+          "2026-11-25"
+        ]
+      }
+    ],
+    "notes": [
+      "DGS10 no tiene dato el 2026-11-11 (Veterans Day: cierra el mercado de bonos, no la bolsa). Esperado.",
+      "Variaciones de índices: cierre contra cierre. VIX y tasa: cambios absolutos (puntos y puntos básicos)."
+    ]
+  },
+  "sp500": {
+    "name": "S&P 500",
+    "source": {
+      "provider": "FRED",
+      "series_id": "SP500",
+      "url": "https://fred.stlouisfed.org/series/SP500",
+      "raw_sha256": "6b569d73e8b3112290ca56ace4b02550a6ee63e99b9ce7839b64c24e4975a6fe"
+    },
+    "base": {
+      "date": "2026-11-10",
+      "value": 7520.93
+    },
+    "end": {
+      "date": "2026-11-24",
+      "value": 7201.09
+    },
+    "cum_pct": -4.252666,
+    "cum_points": -319.84,
+    "daily": [
+      {
+        "date": "2026-11-11",
+        "value": 7619.38,
+        "pct": 1.309014,
+        "change": 98.45
+      },
+      {
+        "date": "2026-11-12",
+        "value": 7592.4,
+        "pct": -0.354097,
+        "change": -26.98
+      },
+      {
+        "date": "2026-11-13",
+        "value": 7561.67,
+        "pct": -0.404747,
+        "change": -30.73
+      },
+      {
+        "date": "2026-11-16",
+        "value": 7416.59,
+        "pct": -1.918624,
+        "change": -145.08
+      },
+      {
+        "date": "2026-11-17",
+        "value": 7340.53,
+        "pct": -1.025539,
+        "change": -76.06
+      },
+      {
+        "date": "2026-11-18",
+        "value": 7323.63,
+        "pct": -0.230229,
+        "change": -16.9
+      },
+      {
+        "date": "2026-11-19",
+        "value": 7175.83,
+        "pct": -2.018125,
+        "change": -147.8
+      },
+      {
+        "date": "2026-11-20",
+        "value": 6910.39,
+        "pct": -3.699084,
+        "change": -265.44
+      },
+      {
+        "date": "2026-11-23",
+        "value": 7237.17,
+        "pct": 4.728821,
+        "change": 326.78
+      },
+      {
+        "date": "2026-11-24",
+        "value": 7201.09,
+        "pct": -0.498537,
+        "change": -36.08
+      }
+    ],
+    "worst_day": {
+      "date": "2026-11-20",
+      "value": 6910.39,
+      "pct": -3.699084,
+      "change": -265.44
+    },
+    "best_day": {
+      "date": "2026-11-23",
+      "value": 7237.17,
+      "pct": 4.728821,
+      "change": 326.78
+    },
+    "high": {
+      "date": "2026-11-11",
+      "value": 7619.38,
+      "pct": 1.309014,
+      "change": 98.45
+    },
+    "low": {
+      "date": "2026-11-20",
+      "value": 6910.39,
+      "pct": -3.699084,
+      "change": -265.44
+    },
+    "up_days": 2,
+    "down_days": 8,
+    "trading_days": 10,
+    "max_drawdown_pct": -9.305088
+  },
+  "nasdaq": {
+    "name": "Nasdaq Composite",
+    "source": {
+      "provider": "FRED",
+      "series_id": "NASDAQCOM",
+      "url": "https://fred.stlouisfed.org/series/NASDAQCOM",
+      "raw_sha256": "15cf023dd4c578d1201765aeb93d3f79186883cd33a2efdbded2c88e9879226c"
+    },
+    "base": {
+      "date": "2026-11-10",
+      "value": 25065.87
+    },
+    "end": {
+      "date": "2026-11-25",
+      "value": 23585.8
+    },
+    "cum_pct": -5.904722,
+    "cum_points": -1480.07,
+    "daily": [
+      {
+        "date": "2026-11-11",
+        "value": 25466.19,
+        "pct": 1.597072,
+        "change": 400.32
+      },
+      {
+        "date": "2026-11-12",
+        "value": 25366.09,
+        "pct": -0.39307,
+        "change": -100.1
+      },
+      {
+        "date": "2026-11-13",
+        "value": 25136.27,
+        "pct": -0.906013,
+        "change": -229.82
+      },
+      {
+        "date": "2026-11-16",
+        "value": 24509.76,
+        "pct": -2.492454,
+        "change": -626.51
+      },
+      {
+        "date": "2026-11-17",
+        "value": 24328.38,
+        "pct": -0.740032,
+        "change": -181.38
+      },
+      {
+        "date": "2026-11-18",
+        "value": 24429.88,
+        "pct": 0.417208,
+        "change": 101.5
+      },
+      {
+        "date": "2026-11-19",
+        "value": 23879.2,
+        "pct": -2.254125,
+        "change": -550.68
+      },
+      {
+        "date": "2026-11-20",
+        "value": 22617.73,
+        "pct": -5.282715,
+        "change": -1261.47
+      },
+      {
+        "date": "2026-11-23",
+        "value": 24089.56,
+        "pct": 6.507417,
+        "change": 1471.83
+      },
+      {
+        "date": "2026-11-24",
+        "value": 23733.54,
+        "pct": -1.477902,
+        "change": -356.02
+      },
+      {
+        "date": "2026-11-25",
+        "value": 23585.8,
+        "pct": -0.622495,
+        "change": -147.74
+      }
+    ],
+    "worst_day": {
+      "date": "2026-11-20",
+      "value": 22617.73,
+      "pct": -5.282715,
+      "change": -1261.47
+    },
+    "best_day": {
+      "date": "2026-11-23",
+      "value": 24089.56,
+      "pct": 6.507417,
+      "change": 1471.83
+    },
+    "high": {
+      "date": "2026-11-11",
+      "value": 25466.19,
+      "pct": 1.597072,
+      "change": 400.32
+    },
+    "low": {
+      "date": "2026-11-20",
+      "value": 22617.73,
+      "pct": -5.282715,
+      "change": -1261.47
+    },
+    "up_days": 3,
+    "down_days": 8,
+    "trading_days": 11,
+    "max_drawdown_pct": -11.185262
+  },
+  "dow": {
+    "name": "Dow Jones Industrial Average",
+    "source": {
+      "provider": "FRED",
+      "series_id": "DJIA",
+      "url": "https://fred.stlouisfed.org/series/DJIA",
+      "raw_sha256": "2838a571811b61068b91139572e832ca8a816c28630cb02eafb4f830e0b725ec"
+    },
+    "base": {
+      "date": "2026-11-10",
+      "value": 52231.89
+    },
+    "end": {
+      "date": "2026-11-25",
+      "value": 50182.95
+    },
+    "cum_pct": -3.922776,
+    "cum_points": -2048.94,
+    "daily": [
+      {
+        "date": "2026-11-11",
+        "value": 52486.49,
+        "pct": 0.487442,
+        "change": 254.6
+      },
+      {
+        "date": "2026-11-12",
+        "value": 52297.09,
+        "pct": -0.360855,
+        "change": -189.4
+      },
+      {
+        "date": "2026-11-13",
+        "value": 52347.55,
+        "pct": 0.096487,
+        "change": 50.46
+      },
+      {
+        "date": "2026-11-16",
+        "value": 51608.17,
+        "pct": -1.412444,
+        "change": -739.38
+      },
+      {
+        "date": "2026-11-17",
+        "value": 50759.42,
+        "pct": -1.644604,
+        "change": -848.75
+      },
+      {
+        "date": "2026-11-18",
+        "value": 50198.17,
+        "pct": -1.105706,
+        "change": -561.25
+      },
+      {
+        "date": "2026-11-19",
+        "value": 49097.06,
+        "pct": -2.193526,
+        "change": -1101.11
+      },
+      {
+        "date": "2026-11-20",
+        "value": 48147.33,
+        "pct": -1.934393,
+        "change": -949.73
+      },
+      {
+        "date": "2026-11-23",
+        "value": 49595.31,
+        "pct": 3.007394,
+        "change": 1447.98
+      },
+      {
+        "date": "2026-11-24",
+        "value": 50018.7,
+        "pct": 0.85369,
+        "change": 423.39
+      },
+      {
+        "date": "2026-11-25",
+        "value": 50182.95,
+        "pct": 0.328377,
+        "change": 164.25
+      }
+    ],
+    "worst_day": {
+      "date": "2026-11-19",
+      "value": 49097.06,
+      "pct": -2.193526,
+      "change": -1101.11
+    },
+    "best_day": {
+      "date": "2026-11-23",
+      "value": 49595.31,
+      "pct": 3.007394,
+      "change": 1447.98
+    },
+    "high": {
+      "date": "2026-11-11",
+      "value": 52486.49,
+      "pct": 0.487442,
+      "change": 254.6
+    },
+    "low": {
+      "date": "2026-11-20",
+      "value": 48147.33,
+      "pct": -1.934393,
+      "change": -949.73
+    },
+    "up_days": 5,
+    "down_days": 6,
+    "trading_days": 11,
+    "max_drawdown_pct": -8.267194
+  },
+  "vix": {
+    "name": "VIX (CBOE Volatility Index)",
+    "source": {
+      "provider": "FRED",
+      "series_id": "VIXCLS",
+      "url": "https://fred.stlouisfed.org/series/VIXCLS",
+      "raw_sha256": "796855caa70f144c9a3c308f6d3da802c1c9985ac9065e098fcbe4c613a8242c"
+    },
+    "base": {
+      "date": "2026-11-10",
+      "value": 19.46
+    },
+    "end": {
+      "date": "2026-11-24",
+      "value": 26.36
+    },
+    "change": 6.9,
+    "daily": [
+      {
+        "date": "2026-11-11",
+        "value": 17.49,
+        "pct": -10.12333,
+        "change": -1.97
+      },
+      {
+        "date": "2026-11-12",
+        "value": 18.7,
+        "pct": 6.918239,
+        "change": 1.21
+      },
+      {
+        "date": "2026-11-13",
+        "value": 19.3,
+        "pct": 3.208556,
+        "change": 0.6
+      },
+      {
+        "date": "2026-11-16",
+        "value": 22.91,
+        "pct": 18.704663,
+        "change": 3.61
+      },
+      {
+        "date": "2026-11-17",
+        "value": 25.46,
+        "pct": 11.130511,
+        "change": 2.55
+      },
+      {
+        "date": "2026-11-18",
+        "value": 24.56,
+        "pct": -3.534957,
+        "change": -0.9
+      },
+      {
+        "date": "2026-11-19",
+        "value": 28.44,
+        "pct": 15.798046,
+        "change": 3.88
+      },
+      {
+        "date": "2026-11-20",
+        "value": 35.89,
+        "pct": 26.195499,
+        "change": 7.45
+      },
+      {
+        "date": "2026-11-23",
+        "value": 26.62,
+        "pct": -25.828922,
+        "change": -9.27
+      },
+      {
+        "date": "2026-11-24",
+        "value": 26.36,
+        "pct": -0.976709,
+        "change": -0.26
+      }
+    ],
+    "high": {
+      "date": "2026-11-20",
+      "value": 35.89,
+      "pct": 26.195499,
+      "change": 7.45
+    },
+    "low": {
+      "date": "2026-11-11",
+      "value": 17.49,
+      "pct": -10.12333,
+      "change": -1.97
+    },
+    "biggest_daily_rise": {
+      "date": "2026-11-20",
+      "value": 35.89,
+      "pct": 26.195499,
+      "change": 7.45
+    },
+    "biggest_daily_drop": {
+      "date": "2026-11-23",
+      "value": 26.62,
+      "pct": -25.828922,
+      "change": -9.27
+    },
+    "observations": 10
+  },
+  "us10y": {
+    "name": "Tasa del Tesoro a 10 años",
+    "source": {
+      "provider": "FRED",
+      "series_id": "DGS10",
+      "url": "https://fred.stlouisfed.org/series/DGS10",
+      "raw_sha256": "871fc8331dddf8a9009c8469648f664a2ed88fde86a7bb1a18192cad17dbbd84"
+    },
+    "base": {
+      "date": "2026-11-10",
+      "value": 4.98
+    },
+    "end": {
+      "date": "2026-11-24",
+      "value": 4.91
+    },
+    "change": -0.07,
+    "change_bp": -7,
+    "daily": [
+      {
+        "date": "2026-11-12",
+        "value": 5.1,
+        "pct": 2.409639,
+        "change": 0.12
+      },
+      {
+        "date": "2026-11-13",
+        "value": 5.15,
+        "pct": 0.980392,
+        "change": 0.05
+      },
+      {
+        "date": "2026-11-16",
+        "value": 5.12,
+        "pct": -0.582524,
+        "change": -0.03
+      },
+      {
+        "date": "2026-11-17",
+        "value": 5.1,
+        "pct": -0.390625,
+        "change": -0.02
+      },
+      {
+        "date": "2026-11-18",
+        "value": 5.07,
+        "pct": -0.588235,
+        "change": -0.03
+      },
+      {
+        "date": "2026-11-19",
+        "value": 5.04,
+        "pct": -0.591716,
+        "change": -0.03
+      },
+      {
+        "date": "2026-11-20",
+        "value": 4.92,
+        "pct": -2.380952,
+        "change": -0.12
+      },
+      {
+        "date": "2026-11-23",
+        "value": 4.92,
+        "pct": 0,
+        "change": 0
+      },
+      {
+        "date": "2026-11-24",
+        "value": 4.91,
+        "pct": -0.203252,
+        "change": -0.01
+      }
+    ],
+    "high": {
+      "date": "2026-11-13",
+      "value": 5.15,
+      "pct": 0.980392,
+      "change": 0.05
+    },
+    "low": {
+      "date": "2026-11-24",
+      "value": 4.91,
+      "pct": -0.203252,
+      "change": -0.01
+    },
+    "biggest_daily_rise": {
+      "date": "2026-11-12",
+      "value": 5.1,
+      "pct": 2.409639,
+      "change": 0.12
+    },
+    "biggest_daily_drop": {
+      "date": "2026-11-20",
+      "value": 4.92,
+      "pct": -2.380952,
+      "change": -0.12
+    },
+    "observations": 9
+  },
+  "comparisons": {
+    "worst_index": {
+      "key": "nasdaq",
+      "name": "Nasdaq Composite",
+      "cum_pct": -5.904722
+    },
+    "best_index": {
+      "key": "dow",
+      "name": "Dow Jones Industrial Average",
+      "cum_pct": -3.922776
+    }
+  }
+}
