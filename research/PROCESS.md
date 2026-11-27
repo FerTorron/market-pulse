@@ -151,3 +151,9 @@ _A cargar por Fernando._
 - La D15 se citaba antes de existir (se agregó mientras corría la pasada).
 - Un texto del sitio decía "el último día", que ahora se podía leer como el 24.
 - Se aplicó todo, incluidas dos observaciones no bloqueantes.
+
+---
+
+## Fase 8 — Revisión humana antes de enviar
+
+Fernando leyó el sitio publicado y marcó cinco problemas de redacción que ni el código ni las cinco pasadas del verifier habían detectado (DECISIONS E18): un título que generalizaba más que el dato, una fecha relativa ambigua, una traducción presentada como cita textual, una fuente mal rotulada y un verbo que podía leerse como imperativo. Se corrigieron en los dos idiomas. Es el control que cierra el proceso: el código asegura los números, el verifier filtra las afirmaciones y la lectura humana encuentra lo que suena mal o se puede malinterpretar.

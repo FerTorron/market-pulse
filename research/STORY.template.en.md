@@ -33,7 +33,7 @@ sp500.high.value > sp500.base.value
 us10y.change_bp > -10
 us10y.change_bp < 10
 -->
-# Two weeks in the red: US stocks fell, tech fell the most, and one day of sharp rebound wasn't enough to make up for it
+# Two weeks in the red: US stocks fell, the Nasdaq, the index with the most tech companies, fell the most, and one day of sharp rebound wasn't enough to make up for it
 
 _From {{meta.period_start|date}} to {{meta.period_end|date}}, compared with the close on {{meta.base_date|dow}}. Reading time: 3 minutes._
 
@@ -55,7 +55,7 @@ Out of {{sp500.trading_days|int}} trading days, the S&P 500 closed lower on {{sp
 
 That day the S&P 500 fell {{sp500.worst_day.pct|abspct}} and the Nasdaq {{nasdaq.worst_day.pct|abspct}}. For the Dow, the worst day was a different one: {{dow.worst_day.date|dow}} ({{dow.worst_day.pct|pct}}).
 
-**What coincided:** we found no economic data release or official announcement that day. The press described a heavy sell-off in AI and chip stocks: [UPI](https://www.upi.com/Top_News/US/2026/11/20/Dow-SP-500-enter-correction-as-Nasdaq-plunges-in-AI-stock-sell-off/1061795214998/) attributed it to doubts about the cost and return of AI investment, and [Yahoo Finance](https://finance.yahoo.com/markets/stocks/articles/stock-market-today-futures-plunge-131303598.html) to fears of a bubble bursting. An Interactive Brokers analyst, quoted by CNBC, said that "the dam seemed to break once the big event was behind us"; [Yahoo Finance](https://finance.yahoo.com/markets/stocks/articles/stock-market-today-futures-plunge-131303598.html) places that quote right after mentioning Anthropic's stock market debut on {{d:2026-11-19}} ([AP](https://www.ajc.com/news/2026/11/wall-street-tumbles-to-its-longest-losing-streak-since-2024-as-the-dow-drops-1100-points/)). Two days earlier, after the close on {{d:2026-11-17}}, Nvidia had reported results above expectations ([TheStreet](https://pro.thestreet.com/stock-market-today/nvidia-clears-the-bar-in-its-first-report-without-huang)). This is the press's explanation, not a proven cause.
+**What coincided:** we found no economic data release or official announcement that day. The press described a heavy sell-off in AI and chip stocks: [UPI](https://www.upi.com/Top_News/US/2026/11/20/Dow-SP-500-enter-correction-as-Nasdaq-plunges-in-AI-stock-sell-off/1061795214998/) attributed it to doubts about the cost and return of AI investment, and [Yahoo Finance](https://finance.yahoo.com/markets/stocks/articles/stock-market-today-futures-plunge-131303598.html) to fears of a bubble bursting. An Interactive Brokers analyst, quoted by CNBC, said that "the dam seemed to break once the big event was behind us"; [Yahoo Finance](https://finance.yahoo.com/markets/stocks/articles/stock-market-today-futures-plunge-131303598.html) places that quote right after mentioning Anthropic's stock market debut on {{d:2026-11-19}} ([AP (via AJC)](https://www.ajc.com/news/2026/11/wall-street-tumbles-to-its-longest-losing-streak-since-2024-as-the-dow-drops-1100-points/)). On {{d:2026-11-17}}, after the close, Nvidia had reported results above expectations ([TheStreet](https://pro.thestreet.com/stock-market-today/nvidia-clears-the-bar-in-its-first-report-without-huang)). This is the press's explanation, not a proven cause.
 
 ### The best day coincided with the return of Nvidia's CEO
 
@@ -88,7 +88,7 @@ Change in each index versus the previous close.
 - **It doesn't predict anything.** A fall doesn't tell you whether it will keep falling.
 - **It doesn't recommend buying or selling.**
 - **"Coincided with" is not "was caused by".** The causes mentioned are the ones the press attributed; we didn't prove them.
-- **It only looks at two weeks**: it doesn't say whether the indexes are expensive or cheap, or how they've done this year.
+- **It only covers two weeks**: it doesn't say whether the indexes are expensive or cheap, or how they've done this year.
 
 ## Sources and method
 

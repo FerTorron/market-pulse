@@ -33,7 +33,7 @@ sp500.high.value > sp500.base.value
 us10y.change_bp > -10
 us10y.change_bp < 10
 -->
-# Dos semanas en rojo: la bolsa de EE.UU. bajó, las tecnológicas fueron las que más cayeron y un día de fuerte rebote no alcanzó para compensar
+# Dos semanas en rojo: la bolsa de EE.UU. bajó, el Nasdaq, el índice con más tecnológicas, fue el que más cayó, y un día de fuerte rebote no alcanzó para compensar
 
 _Del {{meta.period_start|date}} al {{meta.period_end|date}}, comparado con el cierre del {{meta.base_date|dow}}. Lectura: 3 minutos._
 
@@ -55,7 +55,7 @@ De {{sp500.trading_days|int}} ruedas, el S&P 500 cerró en baja {{sp500.down_day
 
 Ese día el S&P 500 cayó {{sp500.worst_day.pct|abspct}} y el Nasdaq {{nasdaq.worst_day.pct|abspct}}. Para el Dow, el peor día fue otro: el {{dow.worst_day.date|dow}} ({{dow.worst_day.pct|pct}}).
 
-**Qué coincidió:** no encontramos un dato económico ni un anuncio oficial ese día. La prensa describió una venta fuerte de acciones de IA y chips: [UPI](https://www.upi.com/Top_News/US/2026/11/20/Dow-SP-500-enter-correction-as-Nasdaq-plunges-in-AI-stock-sell-off/1061795214998/) la atribuyó a dudas sobre el costo y el retorno de las inversiones en IA, y [Yahoo Finance](https://finance.yahoo.com/markets/stocks/articles/stock-market-today-futures-plunge-131303598.html) al temor a que estalle una burbuja. Un analista de Interactive Brokers, citado por CNBC, dijo que la caída "pareció desatarse una vez pasado el gran evento"; [Yahoo Finance](https://finance.yahoo.com/markets/stocks/articles/stock-market-today-futures-plunge-131303598.html) pone esa frase justo después de mencionar la salida a bolsa de Anthropic del {{d:2026-11-19}} ([AP](https://www.ajc.com/news/2026/11/wall-street-tumbles-to-its-longest-losing-streak-since-2024-as-the-dow-drops-1100-points/)). Dos días antes, después del cierre del {{d:2026-11-17}}, Nvidia había publicado resultados por encima de lo esperado ([TheStreet](https://pro.thestreet.com/stock-market-today/nvidia-clears-the-bar-in-its-first-report-without-huang)). Es la explicación de la prensa, no una causa demostrada.
+**Qué coincidió:** no encontramos un dato económico ni un anuncio oficial ese día. La prensa describió una venta fuerte de acciones de IA y chips: [UPI](https://www.upi.com/Top_News/US/2026/11/20/Dow-SP-500-enter-correction-as-Nasdaq-plunges-in-AI-stock-sell-off/1061795214998/) la atribuyó a dudas sobre el costo y el retorno de las inversiones en IA, y [Yahoo Finance](https://finance.yahoo.com/markets/stocks/articles/stock-market-today-futures-plunge-131303598.html) al temor a que estalle una burbuja. Según CNBC, un analista de Interactive Brokers dijo que la caída pareció desatarse una vez pasado el gran evento; [Yahoo Finance](https://finance.yahoo.com/markets/stocks/articles/stock-market-today-futures-plunge-131303598.html) pone esa frase justo después de mencionar la salida a bolsa de Anthropic del {{d:2026-11-19}} ([AP (vía AJC)](https://www.ajc.com/news/2026/11/wall-street-tumbles-to-its-longest-losing-streak-since-2024-as-the-dow-drops-1100-points/)). El {{d:2026-11-17}}, después del cierre, Nvidia había publicado resultados por encima de lo esperado ([TheStreet](https://pro.thestreet.com/stock-market-today/nvidia-clears-the-bar-in-its-first-report-without-huang)). Es la explicación de la prensa, no una causa demostrada.
 
 ### El mejor día coincidió con la vuelta del CEO de Nvidia
 
@@ -88,7 +88,7 @@ Variación de cada índice contra el cierre anterior.
 - **No predice nada.** Que haya caído no dice si va a seguir cayendo.
 - **No recomienda comprar ni vender.**
 - **"Coincidió con" no es "fue por".** Las causas que aparecen son las que atribuyó la prensa; no las probamos.
-- **Mira solo dos semanas**: no dice si los índices están caros o baratos ni cómo vienen en el año.
+- **Abarca solo dos semanas**: no dice si los índices están caros o baratos ni cómo vienen en el año.
 
 ## Fuentes y método
 
