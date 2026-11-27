@@ -1,31 +1,12 @@
 {
   "meta": {
-    "generated_at": "2026-11-26T17:23:44.595Z",
-    "data_downloaded_at": "2026-11-26T16:45:20.140Z",
+    "generated_at": "2026-11-27T12:26:17.919Z",
+    "data_downloaded_at": "2026-11-27T12:26:13.602Z",
     "base_date": "2026-11-10",
     "period_start": "2026-11-11",
-    "period_end": "2026-11-25",
-    "complete": false,
-    "missing": [
-      {
-        "series": "SP500",
-        "dates": [
-          "2026-11-25"
-        ]
-      },
-      {
-        "series": "VIXCLS",
-        "dates": [
-          "2026-11-25"
-        ]
-      },
-      {
-        "series": "DGS10",
-        "dates": [
-          "2026-11-25"
-        ]
-      }
-    ],
+    "period_end": "2026-11-24",
+    "complete": true,
+    "missing": [],
     "notes": [
       "DGS10 no tiene dato el 2026-11-11 (Veterans Day: cierra el mercado de bonos, no la bolsa). Esperado.",
       "Variaciones de índices: cierre contra cierre. VIX y tasa: cambios absolutos (puntos y puntos básicos)."
@@ -192,18 +173,18 @@
       "provider": "FRED",
       "series_id": "NASDAQCOM",
       "url": "https://fred.stlouisfed.org/series/NASDAQCOM",
-      "raw_sha256": "15cf023dd4c578d1201765aeb93d3f79186883cd33a2efdbded2c88e9879226c"
+      "raw_sha256": "994d4b8a9ac101532d5dc9d59f25d7421a4ce018623430016ada746c53909bb2"
     },
     "base": {
       "date": "2026-11-10",
       "value": 25065.87
     },
     "end": {
-      "date": "2026-11-25",
-      "value": 23585.8
+      "date": "2026-11-24",
+      "value": 23733.54
     },
-    "cum_pct": -5.904722,
-    "cum_points": -1480.07,
+    "cum_pct": -5.315315,
+    "cum_points": -1332.33,
     "daily": [
       {
         "date": "2026-11-11",
@@ -264,12 +245,6 @@
         "value": 23733.54,
         "pct": -1.477902,
         "change": -356.02
-      },
-      {
-        "date": "2026-11-25",
-        "value": 23585.8,
-        "pct": -0.622495,
-        "change": -147.74
       }
     ],
     "worst_day": {
@@ -297,8 +272,8 @@
       "change": -1261.47
     },
     "up_days": 3,
-    "down_days": 8,
-    "trading_days": 11,
+    "down_days": 7,
+    "trading_days": 10,
     "max_drawdown_pct": -11.185262,
     "path": [
       {
@@ -344,10 +319,6 @@
       {
         "date": "2026-11-24",
         "cum_pct": -5.315315
-      },
-      {
-        "date": "2026-11-25",
-        "cum_pct": -5.904722
       }
     ]
   },
@@ -357,18 +328,18 @@
       "provider": "FRED",
       "series_id": "DJIA",
       "url": "https://fred.stlouisfed.org/series/DJIA",
-      "raw_sha256": "2838a571811b61068b91139572e832ca8a816c28630cb02eafb4f830e0b725ec"
+      "raw_sha256": "0d44d1fb78a9245cf3a0eae2debdab8668d586719dd12a0f6c1ed050ddcf43ce"
     },
     "base": {
       "date": "2026-11-10",
       "value": 52231.89
     },
     "end": {
-      "date": "2026-11-25",
-      "value": 50182.95
+      "date": "2026-11-24",
+      "value": 50018.7
     },
-    "cum_pct": -3.922776,
-    "cum_points": -2048.94,
+    "cum_pct": -4.237239,
+    "cum_points": -2213.19,
     "daily": [
       {
         "date": "2026-11-11",
@@ -429,12 +400,6 @@
         "value": 50018.7,
         "pct": 0.85369,
         "change": 423.39
-      },
-      {
-        "date": "2026-11-25",
-        "value": 50182.95,
-        "pct": 0.328377,
-        "change": 164.25
       }
     ],
     "worst_day": {
@@ -461,9 +426,9 @@
       "pct": -1.934393,
       "change": -949.73
     },
-    "up_days": 5,
+    "up_days": 4,
     "down_days": 6,
-    "trading_days": 11,
+    "trading_days": 10,
     "max_drawdown_pct": -8.267194,
     "path": [
       {
@@ -509,10 +474,6 @@
       {
         "date": "2026-11-24",
         "cum_pct": -4.237239
-      },
-      {
-        "date": "2026-11-25",
-        "cum_pct": -3.922776
       }
     ]
   },
@@ -725,12 +686,12 @@
     "worst_index": {
       "key": "nasdaq",
       "name": "Nasdaq Composite",
-      "cum_pct": -5.904722
+      "cum_pct": -5.315315
     },
     "best_index": {
       "key": "dow",
       "name": "Dow Jones Industrial Average",
-      "cum_pct": -3.922776
+      "cum_pct": -4.237239
     }
   }
 }

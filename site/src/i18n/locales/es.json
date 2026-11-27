@@ -64,7 +64,7 @@
       },
       "run": {
         "title": "La primera corrida",
-        "body": "El verificador rechazó afirmaciones con una sola fuente, fechas equivocadas y causas sin respaldo, varias de ellas escritas por Claude, y encontró un error en el código. FRED todavía no había publicado el último día y el sistema no rellenó nada."
+        "body": "El verificador rechazó afirmaciones con una sola fuente, fechas equivocadas y causas sin respaldo, varias de ellas escritas por Claude, y encontró un error en el código. FRED todavía no había publicado el último día del plan original para tres de las cinco series y el sistema no rellenó nada: por eso el período termina un día antes."
       },
       "site": {
         "title": "Este sitio",

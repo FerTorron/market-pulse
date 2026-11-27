@@ -3,16 +3,17 @@
 
 export const BASE_DATE = '2026-11-10';
 export const PERIOD_START = '2026-11-11';
-export const PERIOD_END = '2026-11-25';
+// Corte al 24/11 (DECISIONS D15): al momento de la entrega FRED no había publicado el 25/11 de SP500, VIXCLS y DGS10.
+export const PERIOD_END = '2026-11-24';
 /** Margen hacia atrás para asegurarnos de tener el cierre base. */
 export const FETCH_FROM = '2026-11-03';
 
-/** Ruedas de NYSE del período (11/11 al 25/11/2026). Escrito a mano a propósito:
+/** Ruedas de NYSE del período (11/11 al 24/11/2026). Escrito a mano a propósito:
  *  validate.ts compara contra esto para detectar fechas faltantes o sobrantes. */
 export const EQUITY_TRADING_DAYS = [
   '2026-11-11', '2026-11-12', '2026-11-13',
   '2026-11-16', '2026-11-17', '2026-11-18', '2026-11-19', '2026-11-20',
-  '2026-11-23', '2026-11-24', '2026-11-25',
+  '2026-11-23', '2026-11-24',
 ] as const;
 
 /** Días en que la bolsa abre pero el mercado de bonos cierra (SIFMA). */

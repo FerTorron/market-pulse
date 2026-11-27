@@ -1,12 +1,12 @@
 {
-  "downloaded_at": "2026-11-26T16:45:20.140Z",
-  "period_end_requested": "2026-11-25",
+  "downloaded_at": "2026-11-27T12:26:13.602Z",
+  "period_end_requested": "2026-11-24",
   "entries": [
     {
       "source": "FRED",
       "role": "data",
       "series": "SP500",
-      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=SP500&cosd=2026-11-03&coed=2026-11-25",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=SP500&cosd=2026-11-03&coed=2026-11-24",
       "file": "data/raw/SP500.csv",
       "sha256": "6b569d73e8b3112290ca56ace4b02550a6ee63e99b9ce7839b64c24e4975a6fe",
       "rows": 16,
@@ -16,27 +16,27 @@
       "source": "FRED",
       "role": "data",
       "series": "NASDAQCOM",
-      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=NASDAQCOM&cosd=2026-11-03&coed=2026-11-25",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=NASDAQCOM&cosd=2026-11-03&coed=2026-11-24",
       "file": "data/raw/NASDAQCOM.csv",
-      "sha256": "15cf023dd4c578d1201765aeb93d3f79186883cd33a2efdbded2c88e9879226c",
-      "rows": 17,
-      "last_date_with_value": "2026-11-25"
+      "sha256": "994d4b8a9ac101532d5dc9d59f25d7421a4ce018623430016ada746c53909bb2",
+      "rows": 16,
+      "last_date_with_value": "2026-11-24"
     },
     {
       "source": "FRED",
       "role": "data",
       "series": "DJIA",
-      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DJIA&cosd=2026-11-03&coed=2026-11-25",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DJIA&cosd=2026-11-03&coed=2026-11-24",
       "file": "data/raw/DJIA.csv",
-      "sha256": "2838a571811b61068b91139572e832ca8a816c28630cb02eafb4f830e0b725ec",
-      "rows": 17,
-      "last_date_with_value": "2026-11-25"
+      "sha256": "0d44d1fb78a9245cf3a0eae2debdab8668d586719dd12a0f6c1ed050ddcf43ce",
+      "rows": 16,
+      "last_date_with_value": "2026-11-24"
     },
     {
       "source": "FRED",
       "role": "data",
       "series": "VIXCLS",
-      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=VIXCLS&cosd=2026-11-03&coed=2026-11-25",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=VIXCLS&cosd=2026-11-03&coed=2026-11-24",
       "file": "data/raw/VIXCLS.csv",
       "sha256": "796855caa70f144c9a3c308f6d3da802c1c9985ac9065e098fcbe4c613a8242c",
       "rows": 16,
@@ -46,7 +46,7 @@
       "source": "FRED",
       "role": "data",
       "series": "DGS10",
-      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DGS10&cosd=2026-11-03&coed=2026-11-25",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DGS10&cosd=2026-11-03&coed=2026-11-24",
       "file": "data/raw/DGS10.csv",
       "sha256": "871fc8331dddf8a9009c8469648f664a2ed88fde86a7bb1a18192cad17dbbd84",
       "rows": 16,
@@ -57,45 +57,45 @@
       "role": "validation-only",
       "series": "SP500",
       "symbol": "^GSPC",
-      "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?period1=1793664000&period2=1795737600&interval=1d",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?period1=1793664000&period2=1795651200&interval=1d",
       "file": "data/raw/yahoo/SP500.json",
-      "sha256": "6f114c175b9a65de018534c4eba2fc29aa3cb9e07c483dddd611ccadda638b83"
+      "sha256": "41141c517acb2fa19b6f41b2f54e030a0f9961b8f6c50c09ad7b8682b8c5d921"
     },
     {
       "source": "Yahoo Finance",
       "role": "validation-only",
       "series": "NASDAQCOM",
       "symbol": "^IXIC",
-      "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EIXIC?period1=1793664000&period2=1795737600&interval=1d",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EIXIC?period1=1793664000&period2=1795651200&interval=1d",
       "file": "data/raw/yahoo/NASDAQCOM.json",
-      "sha256": "1368cffc67af89e2d52490382dd257d09be4febd5c1c987172016c8541fd8c54"
+      "sha256": "73613509555c744138372e4a57e58dd39a6df2fc211a4b6a5e820f01cd67f921"
     },
     {
       "source": "Yahoo Finance",
       "role": "validation-only",
       "series": "DJIA",
       "symbol": "^DJI",
-      "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EDJI?period1=1793664000&period2=1795737600&interval=1d",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EDJI?period1=1793664000&period2=1795651200&interval=1d",
       "file": "data/raw/yahoo/DJIA.json",
-      "sha256": "e31ce3c93e11686ad5bce558617b306dae2c0c38b0ff9f951cd92bcfe467caad"
+      "sha256": "47fedffa0da1a9999faeda9fa337bb5a673abe0b87b53433d7a4ab66f66717f2"
     },
     {
       "source": "Yahoo Finance",
       "role": "validation-only",
       "series": "VIXCLS",
       "symbol": "^VIX",
-      "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EVIX?period1=1793664000&period2=1795737600&interval=1d",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EVIX?period1=1793664000&period2=1795651200&interval=1d",
       "file": "data/raw/yahoo/VIXCLS.json",
-      "sha256": "96ee05879fe39b2a60d9bdf7083bb1c336cd4ba8365ed6ef9648b58e3ca2807c"
+      "sha256": "80515d4c8570c5246084f7dd70b9a2c3a913266fe79a0b6d33a29a67426d9e16"
     },
     {
       "source": "Yahoo Finance",
       "role": "validation-only",
       "series": "DGS10",
       "symbol": "^TNX",
-      "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ETNX?period1=1793664000&period2=1795737600&interval=1d",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ETNX?period1=1793664000&period2=1795651200&interval=1d",
       "file": "data/raw/yahoo/DGS10.json",
-      "sha256": "22ccc25e41f5614748736b99819df3210cfe7cef4c541395f7521f619ebbfa14"
+      "sha256": "7f7ffa7a772cadba28daa04417316ae68d2ca7f4897b18f82b7a21fd8279c271"
     }
   ]
 }

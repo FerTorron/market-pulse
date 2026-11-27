@@ -1,0 +1,6 @@
+$ tsx scripts/render-story.ts
+OK research/STORY.md
+OK research/STORY.en.md
+$ tsx scripts/render-story.ts
+OK research/STORY.md
+OK research/STORY.en.md

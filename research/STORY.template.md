@@ -4,9 +4,9 @@ Solo se usan hechos APROBADOS o REFORMULADOS por el verifier (evidence/audit-eve
 Las cifras propias de los hechos (ingresos de Nvidia, PCE, etc.) no se escriben: están en events.md con su fuente.
 -->
 <!-- assert
-# Condiciones de los datos que el texto da por ciertas. Si los datos cambian (por ejemplo, al llegar el 25/11) y alguna deja de cumplirse, el render falla.
+# Condiciones de los datos que el texto da por ciertas. Si los datos cambian (por ejemplo, si se vuelven a bajar) y alguna deja de cumplirse, el render falla.
 # Salen de la lista "qué volver a comprobar" del verifier (pasadas 2 y 3).
-# Lo que no está acá lo controla otra pieza: datos completos al 25/11, cantidad de ruedas y tabla sin "s/d" → validate.ts (render no corre si no pasa);
+# Lo que no está acá lo controla otra pieza: datos completos al cierre del período, cantidad de ruedas y tabla sin "s/d" → validate.ts (render no corre si no pasa);
 # "coinciden dentro del margen" con Yahoo → render-story.ts falla si cross-check.json tiene diferencias marcadas.
 sp500.cum_pct < 0
 nasdaq.cum_pct < 0
@@ -69,7 +69,7 @@ Aun con ese salto, el rebote no alcanzó: al cierre del {{sp500.end.date|dow}} e
 
 El VIX suele llamarse "índice del miedo", pero mide algo más concreto: **cuánto espera el mercado que se muevan las acciones del S&P 500 en los próximos 30 días**, calculado a partir de lo que se paga por protegerse de esos movimientos. No dice si van a subir o bajar; dice cuánto se espera que se sacudan.
 
-Empezó en {{vix.base.value|num}}, tocó su máximo de {{vix.high.value|num}} el {{vix.high.date|dow}} (el mismo día de la peor caída) y al {{vix.end.date|dow}} estaba en {{vix.end.value|num}}. La mayor baja en un día fue el {{vix.biggest_daily_drop.date|dow}}, el día del rebote. **En criollo:** el mercado pasó a esperar muchos más sacudones que al principio, y al final del período seguía esperando más movimiento que al inicio.
+Empezó en {{vix.base.value|num}}, tocó su máximo de {{vix.high.value|num}} el {{vix.high.date|dow}} (el mismo día de la peor caída del S&P 500 y el Nasdaq) y al {{vix.end.date|dow}} estaba en {{vix.end.value|num}}. La mayor baja en un día fue el {{vix.biggest_daily_drop.date|dow}}, el día del rebote. **En criollo:** el mercado pasó a esperar muchos más sacudones que al principio, y al final del período seguía esperando más movimiento que al inicio.
 
 ### La tasa a 10 años subió, bajó y terminó cerca de donde empezó
 
@@ -83,8 +83,6 @@ Variación de cada índice contra el cierre anterior.
 
 {{table:daily}}
 
-El último día, {{d:2026-11-25}}, se publicaron antes de la apertura el PIB del tercer trimestre ([BEA](https://www.bea.gov/news/2026/gdp-second-estimate-and-corporate-profits-3rd-quarter-2026)) y la inflación de octubre medida por el índice PCE ([BEA](https://www.bea.gov/news/2026/personal-income-and-outlays-october-2026)), y el gobierno propuso nuevos aranceles a varios socios comerciales ([USTR](https://ustr.gov/about/policy-offices/press-office/press-releases/2026/november/ustr-makes-determinations-and-proposes-actions-14-section-301-investigations-relating-structural); [Reuters vía Investing.com](https://www.investing.com/news/world-news/us-proposes-new-tariffs-on-14-trading-partners-to-fight-excess-factory-capacity-5050714)).
-
 ## Qué no dice este análisis
 
 - **No predice nada.** Que haya caído no dice si va a seguir cayendo.
@@ -97,4 +95,5 @@ El último día, {{d:2026-11-25}}, se publicaron antes de la apertura el PIB del
 - **Números:** [FRED](https://fred.stlouisfed.org/) (Reserva Federal de St. Louis), series {{sp500.source.series_id|id}}, {{nasdaq.source.series_id|id}}, {{dow.source.series_id|id}}, {{vix.source.series_id|id}} y {{us10y.source.series_id|id}}. Se calculan con `scripts/compute.ts`; ninguna cifra de mercado de este texto fue escrita a mano.
 - **Control:** los cierres se compararon con Yahoo Finance, solo para validar (`data/processed/cross-check.json`). S&P 500, Nasdaq, Dow y VIX coinciden dentro del margen; la tasa a 10 años difiere apenas, dentro de la tolerancia del control, porque Yahoo toma otra fuente (el índice que publica Cboe, la bolsa de opciones de Chicago), no la serie que usa FRED. Yahoo trae un valor de tasa el día del feriado de bonos (Veterans Day), que no se usa.
 - **Hechos:** `research/events.md`, cada uno con fecha y link, auditado por un agente verificador que rechazó los que tenían una sola fuente, fechas dudosas o causas sin evidencia (hechos: `evidence/audit-eventos.md`; borrador: `research/audit.md`).
+- **Período:** termina el {{meta.period_end|dow}}. Al momento de esta entrega, FRED todavía no había publicado el cierre del día siguiente del S&P 500, del VIX ni de la tasa a 10 años (sí el del Nasdaq y el del Dow). Para que todas las cifras cubran los mismos días, el período se cortó en el último día con datos de las cinco series.
 - **Proceso completo:** `research/PROCESS.md`.

@@ -14,9 +14,10 @@ Una persona sin conocimientos financieros que tiene **3 minutos**.
 
 ## Período
 
-- **11 al 25 de noviembre de 2026** (15 días corridos, 11 ruedas).
+- **11 al 24 de noviembre de 2026** (14 días corridos, 10 ruedas).
+  - El plan original era hasta el 25/11 (15 días, 11 ruedas). Al momento de la entrega FRED todavía no había publicado el cierre del 25/11 de SP500, VIXCLS y DGS10 (sí el de NASDAQCOM y DJIA), así que se cortó en el último día con datos completos para las cinco series. Ver DECISIONS D15.
 - Base de comparación: cierre del **10/11/2026**.
-- Datos congelados al 25/11: el 26 no hubo mercado (Thanksgiving) y el 27 fue media rueda.
+- Datos congelados al 24/11. El 26 no hubo mercado (Thanksgiving) y el 27 fue media rueda.
 
 ## Métricas
 

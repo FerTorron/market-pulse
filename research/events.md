@@ -1,5 +1,7 @@
 # Eventos por rueda — 11 al 25 de noviembre de 2026
 
+> El período final del análisis termina el 24/11 (DECISIONS D15). Las filas del 25/11 quedan como registro pero no se usan en la historia.
+
 Generado por events-agent el 2026-11-26. Fuentes abiertas y verificadas con WebFetch salvo indicación. No se escriben cierres de índices, VIX ni tasas: salen de `data/processed/market-data.json`. Los datos "del hecho" (resultados de empresas, inflación publicada) son los que da cada fuente.
 
 Notas de método:

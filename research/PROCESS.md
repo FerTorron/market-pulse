@@ -134,3 +134,20 @@ _A cargar por Fernando._
 - Se aplicó todo menos un punto: el verifier pidió sacar "Hecha por mí, con Claude" de la fase 0 porque PROCESS.md todavía no la documenta. Se mantuvo porque lo afirma Fernando en su consigna, pero queda pendiente que cargue la Fase 0 con su captura.
 
 **Evidencia:** `site/`, `tests/i18n.test.ts`, `tests/site-charts.test.ts`.
+
+---
+
+## Fase 7 — Corte al 24/11 para la entrega
+
+**Qué pasó.** El primer deploy en Netlify falló porque el build se negó a publicar con datos incompletos: FRED seguía sin el 25/11 de SP500, VIXCLS y DGS10. No había forma de saber cuándo lo iba a publicar, y la entrega no podía esperar (log del deploy: `evidence/netlify-deploy-fallido.txt`).
+
+**Qué se decidió (D15).** Fernando decidió entregar con datos hasta el 24/11. Claude propuso cortar el período para **todas** las series en esa fecha, en vez de publicar un borrador con fechas mezcladas, así los índices siguen siendo comparables y la validación pasa sin desactivar controles. Cambiaron `PERIOD_END` y el calendario en `config.ts`, se sacó de la historia el párrafo del 25/11 (quedó fuera del período) y se agregó una nota explícita del corte en "Fuentes y método".
+
+**Resultado.** Validación PASS. Todas las aserciones de la plantilla se cumplen con los datos nuevos. Se generan `STORY.md` y `STORY.en.md` y el build de producción del sitio pasa sin `ALLOW_INCOMPLETE` (`evidence/render-corte-24.txt`).
+
+**verifier, pasada 5: el corte** (`research/audit.md`; la pasada 4 quedó en `evidence/audit-sitio.md`). La historia aguanta el corte: ninguna frase quedó falsa con los datos nuevos. Quedaron 36 aprobadas, 6 para reformular y 2 rechazadas.
+- La nota del corte atribuía la demora a Thanksgiving sin fuente, cuando FRED sí había publicado el Dow y el Nasdaq.
+- CLAUDE.md decía que DGS10 tiene 10 observaciones; tras el corte son 9.
+- La D15 se citaba antes de existir (se agregó mientras corría la pasada).
+- Un texto del sitio decía "el último día", que ahora se podía leer como el 24.
+- Se aplicó todo, incluidas dos observaciones no bloqueantes.

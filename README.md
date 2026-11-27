@@ -1,6 +1,6 @@
 # market-pulse
 
-Análisis de la bolsa de EE.UU. del 11 al 25 de noviembre de 2026, hecho exclusivamente con Claude, con un proceso reproducible y documentado.
+Análisis de la bolsa de EE.UU. del 11 al 24 de noviembre de 2026 (el plan era hasta el 25; se cortó un día antes porque FRED no había publicado ese cierre de SP500, VIXCLS y DGS10 a tiempo para la entrega, ver [`BRIEF.md`](BRIEF.md) y DECISIONS D15), hecho exclusivamente con Claude, con un proceso reproducible y documentado.
 
 - Qué y para quién: [`BRIEF.md`](BRIEF.md)
 - Cómo se hizo, fase por fase: [`research/PROCESS.md`](research/PROCESS.md)

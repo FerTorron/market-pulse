@@ -4,9 +4,9 @@ No digits outside markers (enforced by scripts/lib/render.ts with the English al
 The assert block below must be identical to the Spanish template (enforced by a test).
 -->
 <!-- assert
-# Condiciones de los datos que el texto da por ciertas. Si los datos cambian (por ejemplo, al llegar el 25/11) y alguna deja de cumplirse, el render falla.
+# Condiciones de los datos que el texto da por ciertas. Si los datos cambian (por ejemplo, si se vuelven a bajar) y alguna deja de cumplirse, el render falla.
 # Salen de la lista "qué volver a comprobar" del verifier (pasadas 2 y 3).
-# Lo que no está acá lo controla otra pieza: datos completos al 25/11, cantidad de ruedas y tabla sin "s/d" → validate.ts (render no corre si no pasa);
+# Lo que no está acá lo controla otra pieza: datos completos al cierre del período, cantidad de ruedas y tabla sin "s/d" → validate.ts (render no corre si no pasa);
 # "coinciden dentro del margen" con Yahoo → render-story.ts falla si cross-check.json tiene diferencias marcadas.
 sp500.cum_pct < 0
 nasdaq.cum_pct < 0
@@ -69,7 +69,7 @@ Even with that jump, the rebound fell short: at the close on {{sp500.end.date|do
 
 The VIX is often called the "fear index", but it measures something more specific: **how much the market expects S&P 500 stocks to move over the next 30 days**, calculated from what investors pay to protect themselves against those moves. It doesn't say whether stocks will go up or down; it says how much shaking is expected.
 
-It started at {{vix.base.value|num}}, hit its peak of {{vix.high.value|num}} on {{vix.high.date|dow}} (the same day as the worst drop) and on {{vix.end.date|dow}} stood at {{vix.end.value|num}}. Its biggest one-day fall was on {{vix.biggest_daily_drop.date|dow}}, the day of the rebound. **In plain terms:** the market came to expect much more shaking than at the start, and at the end of the period it still expected more movement than at the beginning.
+It started at {{vix.base.value|num}}, hit its peak of {{vix.high.value|num}} on {{vix.high.date|dow}} (the same day as the worst drop for the S&P 500 and the Nasdaq) and on {{vix.end.date|dow}} stood at {{vix.end.value|num}}. Its biggest one-day fall was on {{vix.biggest_daily_drop.date|dow}}, the day of the rebound. **In plain terms:** the market came to expect much more shaking than at the start, and at the end of the period it still expected more movement than at the beginning.
 
 ### The 10-year rate rose, fell and ended close to where it started
 
@@ -83,8 +83,6 @@ Change in each index versus the previous close.
 
 {{table:daily}}
 
-On the last day, {{d:2026-11-25}}, the third-quarter GDP ([BEA](https://www.bea.gov/news/2026/gdp-second-estimate-and-corporate-profits-3rd-quarter-2026)) and October inflation as measured by the PCE index ([BEA](https://www.bea.gov/news/2026/personal-income-and-outlays-october-2026)) were released before the open, and the government proposed new tariffs on several trading partners ([USTR](https://ustr.gov/about/policy-offices/press-office/press-releases/2026/november/ustr-makes-determinations-and-proposes-actions-14-section-301-investigations-relating-structural); [Reuters via Investing.com](https://www.investing.com/news/world-news/us-proposes-new-tariffs-on-14-trading-partners-to-fight-excess-factory-capacity-5050714)).
-
 ## What this analysis doesn't say
 
 - **It doesn't predict anything.** A fall doesn't tell you whether it will keep falling.
@@ -97,4 +95,5 @@ On the last day, {{d:2026-11-25}}, the third-quarter GDP ([BEA](https://www.bea.
 - **Numbers:** [FRED](https://fred.stlouisfed.org/) (Federal Reserve Bank of St. Louis), series {{sp500.source.series_id|id}}, {{nasdaq.source.series_id|id}}, {{dow.source.series_id|id}}, {{vix.source.series_id|id}} and {{us10y.source.series_id|id}}. Calculated with `scripts/compute.ts`; no market figure in this text was written by hand.
 - **Control:** closes were compared with Yahoo Finance, for validation only (`data/processed/cross-check.json`). S&P 500, Nasdaq, Dow and VIX match within the margin; the 10-year rate differs slightly, within the control's tolerance, because Yahoo uses another source (the index published by Cboe, the Chicago options exchange), not the series FRED uses. Yahoo has a rate value on the bond-market holiday (Veterans Day), which is not used.
 - **Facts:** `research/events.md`, each with a date and a link, audited by a verifier agent that rejected those with a single source, doubtful dates or causes without evidence (facts: `evidence/audit-eventos.md`; draft: `research/audit.md`).
+- **Period:** it ends on {{meta.period_end|dow}}. At the time of delivery, FRED had not yet published the next day's close for the S&P 500, the VIX or the 10-year rate (it had for the Nasdaq and the Dow). So that every figure covers the same days, the period stops at the last day with data for all five series.
 - **Full process:** `research/PROCESS.md`.

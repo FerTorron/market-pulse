@@ -64,7 +64,7 @@
       },
       "run": {
         "title": "The first run",
-        "body": "The verifier rejected claims with a single source, wrong dates and unsupported causes, several of them written by Claude, and found a bug in the code. FRED had not yet published the last day and the system didn't fill anything in."
+        "body": "The verifier rejected claims with a single source, wrong dates and unsupported causes, several of them written by Claude, and found a bug in the code. FRED had not yet published the original plan's last day for three of the five series and the system didn't fill anything in: that is why the period ends one day earlier."
       },
       "site": {
         "title": "This site",

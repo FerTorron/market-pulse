@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-26T17:23:45.727Z",
+  "generated_at": "2026-11-27T12:26:18.522Z",
   "note": "Yahoo Finance se usa SOLO como control. Ningún valor de Yahoo entra en market-data.json.",
   "series": {
     "SP500": {
@@ -84,9 +84,7 @@
           "flag": "ok"
         }
       ],
-      "dates_only_in_yahoo": [
-        "2026-11-25"
-      ],
+      "dates_only_in_yahoo": [],
       "flagged": 0
     },
     "NASDAQCOM": {
@@ -167,13 +165,6 @@
           "date": "2026-11-24",
           "fred": 23733.54,
           "yahoo": 23733.5391,
-          "diff_pct": 0,
-          "flag": "ok"
-        },
-        {
-          "date": "2026-11-25",
-          "fred": 23585.8,
-          "yahoo": 23585.8008,
           "diff_pct": 0,
           "flag": "ok"
         }
@@ -259,13 +250,6 @@
           "date": "2026-11-24",
           "fred": 50018.7,
           "yahoo": 50018.6992,
-          "diff_pct": 0,
-          "flag": "ok"
-        },
-        {
-          "date": "2026-11-25",
-          "fred": 50182.95,
-          "yahoo": 50182.9492,
           "diff_pct": 0,
           "flag": "ok"
         }
@@ -355,9 +339,7 @@
           "flag": "ok"
         }
       ],
-      "dates_only_in_yahoo": [
-        "2026-11-25"
-      ],
+      "dates_only_in_yahoo": [],
       "flagged": 0
     },
     "DGS10": {
@@ -446,8 +428,7 @@
         }
       ],
       "dates_only_in_yahoo": [
-        "2026-11-11",
-        "2026-11-25"
+        "2026-11-11"
       ],
       "flagged": 0
     }

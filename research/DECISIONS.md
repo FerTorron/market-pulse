@@ -5,7 +5,7 @@
 | # | Fecha | Decisión | Por qué | Alternativa descartada |
 |---|---|---|---|---|
 | D1 | 2026-11-26 | FRED como única fuente de datos; Yahoo solo para validar | FRED es oficial, estable y no pide clave | Mezclar fuentes para completar huecos |
-| D2 | 2026-11-26 | DGS10 con 10 observaciones (11/11 Veterans Day) es esperado | El mercado de bonos cierra ese día | Rellenar con el valor del día anterior |
+| D2 | 2026-11-26 | DGS10 con una observación menos que las acciones (11/11 Veterans Day) es esperado: 10 en el período original, 9 tras el corte al 24/11 | El mercado de bonos cierra ese día | Rellenar con el valor del día anterior |
 | D3 | 2026-11-26 | STORY.md se genera desde una plantilla con marcadores | Hace cumplir por código que ningún número esté escrito a mano | Confiar en que el modelo copie bien los números |
 | D4 | 2026-11-26 | Causas como "coincidió con" salvo evidencia fuerte | Una nota de prensa que atribuye un movimiento no prueba causalidad | Atribuir causas directamente |
 | D5 | 2026-11-26 | Validación cruzada de la tasa con tolerancia absoluta (±2 pb) en vez de relativa | DGS10 (Tesoro) y ^TNX (CBOE) se calculan distinto y DGS10 viene redondeado a 0,01; un 0,05 % relativo equivale a menos de medio punto básico | Mantener ±0,05 % y tener 8 alertas que no indican ningún problema real |
@@ -18,6 +18,7 @@
 | D12 | 2026-11-26 | Plantilla en inglés con el mismo bloque de aserciones, controlado por un test | Los números en inglés también tienen que salir de los datos, y lo que el texto afirma tiene que valer igual en los dos idiomas | Traducir STORY.md a mano |
 | D13 | 2026-11-26 | Textos del sitio en un archivo por idioma (`site/src/i18n/locales/`), también controlados contra dígitos a mano | Pedido de Fernando, y la regla de "ningún número a mano" aplica a toda la página | Textos dentro de los componentes |
 | D14 | 2026-11-26 | Astro fijado en 7.4.1 y TypeScript 6 en el sitio | Las versiones posteriores de Astro piden Node ≥ 22.23.4 (la máquina tiene 22.23.2) y `astro check` no soporta TypeScript 7 | Actualizar Node en la máquina de Fernando sin pedírselo |
+| D15 | 2026-11-27 | Cortar el período al 24/11 (10 ruedas) en vez del 25/11, para todas las series | FRED no había publicado el 25/11 de SP500, VIXCLS y DGS10 al momento de la entrega (Thanksgiving). Cortar todas en el mismo día mantiene comparables los índices y deja la validación en PASS sin desactivar ningún control. Decisión de Fernando por la fecha de entrega | Publicar con `ALLOW_INCOMPLETE=1`: S&P, VIX y tasa al 24, Nasdaq y Dow al 25, con fechas de cierre distintas; o esperar al lunes 30 |
 
 ## What Claude got wrong and what was changed
 

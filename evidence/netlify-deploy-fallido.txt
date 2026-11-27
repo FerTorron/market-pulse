@@ -1,0 +1,14 @@
+Primer deploy en Netlify (2026-11-26): el build se negó a publicar con datos incompletos, como estaba previsto.
+Extracto del log que compartió Fernando:
+
+[build] directory: /opt/build/repo/site/dist/
+generating static routes
+  ├─ /en/index.html [ERROR] Error: Validation did not pass (SP500: faltan: 2026-11-25 | VIXCLS: faltan: 2026-11-25 | DGS10: faltan: 2026-11-25 | -: market-data.json marcado incompleto: [{"series":"SP500","dates":["2026-11-25"]},{"series":"VIXCLS","dates":["2026-11-25"]},{"series":"DGS10","dates":["2026-11-25"]}]). Refusing to build. Set ALLOW_INCOMPLETE=1 to build a draft.
+    at assertPublishable (file:///opt/build/repo/site/dist/.prerender/chunks/HomeView_NQsk4_9Z.mjs:1022:58)
+    at loadSiteData (file:///opt/build/repo/site/dist/.prerender/chunks/HomeView_NQsk4_9Z.mjs:1026:2)
+ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  market-pulse-site@ build: `astro build`
+"build.command" failed
+  Command failed with exit code 1: pnpm --filter market-pulse-site... run build
+Build failed due to a user error: Build script returned non-zero exit code: 2
+
+Resolución: DECISIONS D15 (corte del período al 24/11 para las cinco series).

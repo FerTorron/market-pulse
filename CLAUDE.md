@@ -1,6 +1,6 @@
 # market-pulse — reglas para Claude
 
-Proyecto: análisis de la bolsa de EE.UU. del 11 al 25 de noviembre de 2026 para alguien sin conocimientos financieros que tiene 3 minutos. Ver `BRIEF.md`.
+Proyecto: análisis de la bolsa de EE.UU. del 11 al 24 de noviembre de 2026 para alguien sin conocimientos financieros que tiene 3 minutos. Ver `BRIEF.md`.
 
 ## Reglas duras
 
@@ -13,8 +13,8 @@ Proyecto: análisis de la bolsa de EE.UU. del 11 al 25 de noviembre de 2026 para
 
 ## Período y calendario
 
-- Base: cierre del 10/11/2026. Período: 11/11 al 25/11/2026 (11 ruedas de acciones).
-- 11/11 es Veterans Day: la bolsa abre, el mercado de bonos cierra → DGS10 tiene 10 observaciones. Esperado, no es un error.
+- Base: cierre del 10/11/2026. Período: 11/11 al 24/11/2026 (10 ruedas de acciones). Se cortó al 24 porque FRED no había publicado el 25 de SP500, VIXCLS y DGS10 a tiempo para la entrega (DECISIONS D15).
+- 11/11 es Veterans Day: la bolsa abre, el mercado de bonos cierra → DGS10 tiene 9 observaciones (una menos que las 10 ruedas de acciones). Esperado, no es un error.
 - 26/11 Thanksgiving (cerrado), 27/11 media rueda: fuera del período.
 
 ## Cómo trabajar

@@ -28,7 +28,7 @@ Leé primero `BRIEF.md` y `CLAUDE.md`.
 ## Salida: `research/events.md`
 
 ```markdown
-# Eventos por rueda — 11 al 25 de noviembre de 2026
+# Eventos por rueda — <período de scripts/lib/config.ts>
 
 Generado por events-agent el <fecha>. Fuentes abiertas y verificadas con WebFetch salvo indicación.
 
