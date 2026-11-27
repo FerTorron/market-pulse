@@ -42,5 +42,6 @@ Solo errores reales, con evidencia.
 | E14 | En español, el "%" quedaba solo en otra línea ("6,51" / "%") porque el formato usaba un espacio común | Revisión visual en el navegador | Espacio duro (`NBSP`) en el formato; afecta también a STORY.md |
 | E15 | Claude parafraseó de más las minutas de la Fed ("veían apropiado" donde dicen "would likely be appropriate") y el verifier lo aprobó en la pasada 2 (C33); el inglés lo arrastró. También recortó dos citas en inglés | verifier, pasada 4 (T10, T14, T19), al abrir las fuentes | Citas textuales y "probablemente sería apropiado" en los dos idiomas |
 | E16 | Claude escribió en el sitio afirmaciones sobre el proceso que exageraban los controles ("un sistema que no le cree a la IA", "el código frena lo que está mal") y etiquetas que no coincidían con el dato ("Peor día" para los tres índices, "Tasa a 10 años" sobre un cambio en pb) | verifier, pasada 4 (S5, S6, S10, S11, G1, G5) | Reformuladas |
+| E17 | En el pie del sitio, Claude puso el texto "Hecho por" y el link al nombre en líneas separadas; Astro no conserva ese salto como espacio y quedó "Hecho porFernando Torrón" | Fernando, al ver el sitio publicado en Netlify | Espacio explícito (`{' '}`) |
 
 **Límite conocido del control:** `render.ts` detecta dígitos, no números escritos en palabras ("dos puntos básicos"). Eso lo cubre el verifier (C40), no el código.

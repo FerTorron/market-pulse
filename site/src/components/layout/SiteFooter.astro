@@ -13,8 +13,7 @@ const { t, dataNote } = Astro.props;
 <footer class="site-footer">
   <div class="page inner">
     <p class="author">
-      {t.madeBy}
-      <a href={SITE.portfolioUrl} rel="author">{SITE.author}</a>
+      {t.madeBy}{' '}<a href={SITE.portfolioUrl} rel="author">{SITE.author}</a>
     </p>
     <ul class="links">
       <li><a href={SITE.portfolioUrl}>{t.portfolio}</a></li>
